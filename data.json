@@ -552,7 +552,7 @@
     "portuguese": "No entanto, a",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw2xc432ny1"
    }
   },
@@ -639,5 +639,5 @@
    }
   }
  },
- "rev": 7
+ "rev": 8
 }
