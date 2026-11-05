@@ -218,7 +218,66 @@
     "doneAt": "2026-11-05T18:56:47.103Z",
     "userNote": "He does not worked here.: He doesn’t worked here | We did not went to the meeting.: We didn’t go to the meeting | Did you sent the report?: I didn’t f find mistake | She do not know the answer.: She d",
     "scoreText": "4/8",
-    "pendingParts": ""
+    "pendingParts": "",
+    "correction": {
+     "date": "2026-11-05",
+     "summary": "4 of 8 correct. Past negatives are better. Next goal: base verb after does not.",
+     "items": [
+      {
+       "q": "He does not worked here.",
+       "yours": "He doesn't worked here",
+       "ok": false,
+       "right": "He does not work here.",
+       "why": "After does not, the verb stays in the base form: work."
+      },
+      {
+       "q": "We did not went to the meeting.",
+       "yours": "We didn't go to the meeting",
+       "ok": true,
+       "why": "did not + go. Good!"
+      },
+      {
+       "q": "Did you sent the report?",
+       "yours": "I didn't f find mistake",
+       "ok": false,
+       "right": "Did you send the report?",
+       "why": "You wrote a different sentence. After Did you, use the base verb: send."
+      },
+      {
+       "q": "She do not know the answer.",
+       "yours": "She doesn't the answer",
+       "ok": false,
+       "right": "She does not know the answer.",
+       "why": "does not is only the helper. You still need the main verb: know."
+      },
+      {
+       "q": "I did wrote the email.",
+       "yours": "I did write the email",
+       "ok": true,
+       "why": "Correct grammar. The simple form is: I wrote the email."
+      },
+      {
+       "q": "She ___ (send) the report every Monday.",
+       "yours": "She sends the report every monday",
+       "ok": true,
+       "why": "Verb + s is right. Write Monday with a capital M."
+      },
+      {
+       "q": "He ___ (not / work) on Sunday.",
+       "yours": "he doesn't worked on sunday",
+       "ok": false,
+       "right": "He does not work on Sunday.",
+       "why": "Base verb after doesn't. Capital letters for Sunday and at the start."
+      },
+      {
+       "q": "My boss ___ (check) all the invoices.",
+       "yours": "My boss checks all the invoices",
+       "ok": true,
+       "why": "Perfect."
+      }
+     ],
+     "next": "Day 10 has the same rule. Say it out loud: does not + base verb."
+    }
    },
    "a16": {
     "date": "2026-11-04",
@@ -715,5 +774,5 @@
    }
   }
  },
- "rev": 28
+ "rev": 29
 }
