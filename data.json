@@ -539,7 +539,7 @@
     "portuguese": "o mais rápido possível",
     "example": "Please send the report ASAP.",
     "note": "ASAP is short for \"as soon as possible\".",
-    "learned": false,
+    "learned": true,
     "id": "wmw2w9t41nhb"
    }
   },
@@ -626,5 +626,5 @@
    }
   }
  },
- "rev": 5
+ "rev": 6
 }
