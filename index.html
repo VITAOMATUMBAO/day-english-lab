@@ -191,7 +191,7 @@ a{color:var(--accent)}
         <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
         <div>
           <h1>G'day <span>Lab</span></h1>
-          <p class="sub">Vitor's English route to Australia · v15</p>
+          <p class="sub">Vitor's English route to Australia · v16</p>
         </div>
       </div>
       <div class="count" id="count" aria-live="polite"></div>
@@ -484,10 +484,12 @@ a{color:var(--accent)}
       if(b){ voiceMem[k]=b; return b }
       if(!CFG.gemini) throw {code:'no-key'};
       var body=JSON.stringify({contents:[{parts:[{text:(slow?'Say this slowly and clearly in a friendly Australian-English accent: ':'Say this clearly in a friendly Australian-English accent: ')+text}]}],generationConfig:{responseModalities:['AUDIO'],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:'Kore'}}}}});
-      return fetchT('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},25000).then(function(r){
-        if(!r.ok) throw {code:'tts-'+r.status};
+      function call(n){ return fetchT('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},25000).then(function(r){
+        if((r.status===429||r.status===500||r.status===503) && n<2){ toast('The voice is busy. Trying again in 6 seconds…',6000); return new Promise(function(ok){setTimeout(ok,6000)}).then(function(){return call(n+1)}) }
+        if(!r.ok) return r.text().then(function(t){ throw {code:'tts-'+r.status,message:t.slice(0,140)} });
         return r.json();
-      }).then(function(j){
+      }) }
+      return call(0).then(function(j){
         var p=(((j.candidates||[])[0]||{}).content||{}).parts||[], d=p[0]&&p[0].inlineData&&p[0].inlineData.data;
         if(!d) throw {code:'tts-empty'};
         var blob=pcmToWav(d); voiceMem[k]=blob;
