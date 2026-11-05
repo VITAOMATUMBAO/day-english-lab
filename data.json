@@ -818,6 +818,12 @@
     "activityId": "a15",
     "text": "Redo: Did you sent the report? => Did you send the report (correct)",
     "kind": "redo"
+   },
+   "wmw3yk82zikf": {
+    "at": "2026-11-05T19:48:13.931Z",
+    "activityId": "a15",
+    "text": "Redo: She do not know the answer. => She doesn’t know the answer (correct)",
+    "kind": "redo"
    }
   },
   "attempts": {},
@@ -902,5 +908,5 @@
    }
   }
  },
- "rev": 57
+ "rev": 58
 }
