@@ -762,7 +762,7 @@
     "portuguese": "patrimônio líquido",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw451ukp3mz"
    }
   },
@@ -964,5 +964,5 @@
    }
   }
  },
- "rev": 70
+ "rev": 71
 }
