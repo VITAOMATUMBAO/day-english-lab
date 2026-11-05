@@ -12,9 +12,6 @@
 <link rel="icon" href="icon-192.png">
 <title>G'day Lab</title>
 <style>:root{color-scheme:light dark}html{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}[hidden]{display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: deep-teal header band with a sun-orange accent, pill tabs, one centered column; cards lifted with soft shadow, a journey track from A1 to C1. */
 :root{
@@ -24,9 +21,9 @@
   --accent:#12806A; --accent-ink:#FFFFFF; --soft:#DDEFE9;
   --warn:#935A0B; --warn-soft:#FBEBCB; --bad:#A63A2A; --bad-soft:#F8DFDA; --good:#1F7544; --good-soft:#D8F0E1;
   --shadow:0 1px 2px rgba(11,59,58,.06),0 6px 18px rgba(11,59,58,.07);
-  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-display:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --f-mono:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -61,7 +58,7 @@ h1{font:800 1.65rem/1 var(--f-display);margin:0;letter-spacing:-.02em}
 h1 span{color:var(--sun)}
 .sub{color:var(--on-deep-muted);font-size:.82rem;margin:3px 0 0}
 .count{font:500 .78rem var(--f-mono);color:var(--on-deep-muted);text-align:right;line-height:1.3}
-.count b{display:block;font:800 1.5rem/1 var(--f-display);color:var(--sun);letter-spacing:-.02em}
+.count b{display:inline;margin-right:4px;font:800 1.1rem/1 var(--f-display);color:var(--sun);letter-spacing:-.02em}
 nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:12px}
 nav::-webkit-scrollbar{display:none}
 nav a{flex:0 0 auto;padding:8px 14px;color:var(--on-deep-muted);text-decoration:none;font-weight:600;font-size:.9rem;border-radius:999px;border:1px solid transparent}
@@ -85,10 +82,10 @@ h3{font:600 1rem/1.3 var(--f-body);margin:0}
 .hero p{margin:0 0 6px;color:var(--on-deep-muted);position:relative;max-width:60ch}
 .hero .due{display:inline-block;margin-top:8px;font:500 .78rem var(--f-mono);background:rgba(255,255,255,.1);padding:4px 10px;border-radius:999px;color:var(--on-deep)}
 .hero .min{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);color:var(--on-deep);font-size:.92rem}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;min-width:0;box-shadow:var(--shadow)}
-.stat .n{font:800 2rem/1 var(--f-display);letter-spacing:-.02em}
-.stat .l{font-size:.8rem;color:var(--muted);margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;min-width:0;box-shadow:var(--shadow)}
+.stat .n{font:800 1.5rem/1 var(--f-display);letter-spacing:-.02em}
+.stat .l{font-size:.74rem;color:var(--muted);margin-top:6px}
 .strip{display:flex;gap:5px;flex-wrap:wrap}
 .strip i{width:24px;height:30px;border-radius:7px;background:var(--line);display:block}
 .strip i.on{background:linear-gradient(180deg,var(--accent),var(--deep2))}
@@ -375,10 +372,20 @@ a{color:var(--accent)}
       saveWord(trResult); bumpAI();
       render();
     }).catch(function(e){
-      trBusy=false;
-      trError = aiErr(e);
-      render();
+      return plainTranslate(text).then(function(r){
+        trBusy=false;
+        if(r){ trResult=r; saveWord(r); trError='AI is busy, so this is a simple translation (no example). Saved to your word list.'; }
+        else { trError=aiErr(e); }
+        render();
+      });
     });
+  }
+  function plainTranslate(text){
+    function q(pair){ return fetchT('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair='+pair,{},10000).then(function(r){return r.json()}).then(function(j){ return String((j&&j.responseData&&j.responseData.translatedText)||'').trim() }) }
+    return q('pt|en').then(function(t){
+      if(t && key(t)!==key(text)) return {src:text,from:'pt',translation:t,english:t,portuguese:text,example:'',note:''};
+      return q('en|pt').then(function(t2){ return t2&&key(t2)!==key(text)?{src:text,from:'en',translation:t2,english:text,portuguese:t2,example:'',note:''}:null });
+    }).catch(function(){return null});
   }
   function saveWord(r){
     if(!db) return;
@@ -574,9 +581,7 @@ a{color:var(--accent)}
     h+='<div class="stats">'+
       '<div class="stat"><div class="n">'+got+'/'+days.length+'</div><div class="l">days with a reply since '+fmt(start)+'</div></div>'+
       '<div class="stat"><div class="n">'+open.length+'</div><div class="l">open activities</div></div>'+
-      '<div class="stat"><div class="n">'+done+'</div><div class="l">corrected by your teacher</div></div>'+
       '<div class="stat"><div class="n">'+S.words.length+'</div><div class="l">words in your translator</div></div>'+
-      '<div class="stat"><div class="n">'+(Math.round(mins/6)/10)+'h</div><div class="l">study time you logged</div></div>'+
     '</div>';
     var dw=dueWords().length;
     if(dw) h+='<a class="panel" href="#translator" style="display:block;text-decoration:none;color:inherit"><b>Daily review:</b> '+dw+' word'+(dw>1?'s':'')+' to practise today, about 3 minutes.</a>';
@@ -635,7 +640,7 @@ a{color:var(--accent)}
     var h='<h2>Translator</h2><div class="panel tr-box">'+
       '<div><label for="tr-in">Type a word or a sentence in Portuguese or English</label><textarea id="tr-in" maxlength="300" placeholder="Example: fechamento mensal, or: I need to check the invoice"></textarea></div>'+
       '<div class="row"><button class="btn sun" data-act="translate"'+(trBusy?' disabled':'')+'>'+(trBusy?'Translating…':'Translate')+'</button>'+
-      '<span class="small muted">Every search is saved. Your teacher uses your words in your next activities. AI uses left today: '+aiLeft()+'.</span></div>';
+      '<span class="small muted">Every search is saved to your word list.</span></div>';
     if(trError) h+='<div class="note">'+esc(trError)+'</div>';
     if(trResult){
       var r=trResult, en=r.english||(r.from==='pt'?r.translation:r.src);
