@@ -509,8 +509,8 @@ a{color:var(--accent)}
       voiceEl.onplaying=function(){ if(msg) msg.textContent='' };
       return voiceEl.play();
     }).then(function(){ if(msg) msg.textContent='' }).catch(function(e){
-      if(msg) msg.textContent='';
       speakBrowser(t,rate);
+      setTimeout(function(){ if(msg) msg.textContent='AI voice failed ['+((e&&e.code)||(e&&e.name)||'error')+(e&&e.message?': '+e.message:'')+'], so the phone voice was used. The phone voice is muted on silent.' },300);
     });
   }
   try{ speechSynthesis.getVoices(); if(speechSynthesis.addEventListener) speechSynthesis.addEventListener('voiceschanged',function(){voicesReady=true}); }catch(e){}
