@@ -522,10 +522,10 @@
     "count": 1,
     "from": "pt",
     "src": "Fechamento mensal",
-    "english": "Use monthly close",
+    "english": "monthly close",
     "portuguese": "Fechamento mensal",
-    "example": "",
-    "note": "",
+    "example": "We finish the monthly close on the fifth day.",
+    "note": "\"close\" is a noun here: the monthly close.",
     "learned": true,
     "id": "wmw2w5i91x7m"
    },
@@ -535,10 +535,10 @@
     "count": 1,
     "from": "pt",
     "src": "ASAP",
-    "english": "Act in Support of Ammunition Production",
-    "portuguese": "ASAP",
-    "example": "",
-    "note": "",
+    "english": "as soon as possible",
+    "portuguese": "o mais rápido possível",
+    "example": "Please send the report ASAP.",
+    "note": "ASAP is short for \"as soon as possible\".",
     "learned": false,
     "id": "wmw2w9t41nhb"
    }
@@ -626,5 +626,5 @@
    }
   }
  },
- "rev": 4
+ "rev": 5
 }
