@@ -294,18 +294,19 @@ a{color:var(--accent)}
     }
   };
   /* ---------- AI: Gemini with your own key (saved only on this device) ---------- */
+  function fetchT(url,opts,ms){ var c=new AbortController(), t=setTimeout(function(){c.abort()},ms||15000); opts=Object.assign({},opts,{signal:c.signal}); return fetch(url,opts).then(function(r){clearTimeout(t);return r},function(e){clearTimeout(t); throw {code:'timeout',detail:'no answer in '+((ms||15000)/1000)+'s'}}) }
   var ai = { json:function(prompt,audio){
     if(!CFG.gemini) return Promise.reject({code:'no-key'});
     var models=[CFG.model||DEF_MODEL,'gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.0-flash'].filter(function(m,i,a){return m&&a.indexOf(m)===i});
     var body=JSON.stringify({contents:[{role:'user',parts:[{text:prompt}].concat(audio?[{inline_data:{mime_type:audio.mime,data:audio.data}}]:[])}],generationConfig:{responseMimeType:'application/json',temperature:.2,maxOutputTokens:900}});
     function tryModel(i){
-      return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+models[i]+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body}).then(function(r){
+      return fetchT('https://generativelanguage.googleapis.com/v1beta/models/'+models[i]+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},15000).then(function(r){
         if((r.status===404||r.status===500||r.status===503||r.status===529) && i<models.length-1) return tryModel(i+1);
         if(r.status===429) throw {code:'rate_limited'};
         if(r.status===400||r.status===401||r.status===403){ return r.text().then(function(t){ throw {code:'bad-key',detail:r.status+' '+t.slice(0,160)} }) }
         if(!r.ok) throw {code:'ai-'+r.status};
         return r.json();
-      });
+      },function(e){ if(e&&e.code==='timeout'&&i<models.length-1) return tryModel(i+1); throw e });
     }
     return tryModel(0).then(function(j){
       var t=((((j.candidates||[])[0]||{}).content||{}).parts||[]).map(function(p){return p.text||''}).join('');
@@ -763,9 +764,9 @@ a{color:var(--accent)}
       saveCfg(); cfgMsg='Saved on this device.'; loadData().then(function(){ cfgMsg='Saved. Data loaded.'; render() }).catch(function(){ cfgMsg='Saved, but the data could not be loaded. Check the repository name.'; render() }); render(); return;
     }
     if(act==='cfg-test'){
-      cfgMsg='Testing…'; render();
+      cfgMsg='Testing… (up to 40 seconds)'; render();
       var out=[];
-      fetch('https://api.github.com/repos/'+repo()+'/contents/data.json',{headers:ghHeaders(false),cache:'no-store'}).then(function(r){ out.push('GitHub read: '+(r.ok?'OK':'failed ('+r.status+')')); return fetch('https://api.github.com/repos/'+repo(),{headers:ghHeaders(false)}) }).then(function(r){ return r.json().then(function(j){ out.push('GitHub write access: '+((j.permissions&&j.permissions.push)?'OK':'not confirmed')); }) }).catch(function(){ out.push('GitHub: network error') }).then(function(){
+      fetchT('https://api.github.com/repos/'+repo()+'/contents/data.json',{headers:ghHeaders(false),cache:'no-store'},12000).then(function(r){ out.push('GitHub read: '+(r.ok?'OK':'failed ('+r.status+')')); return fetchT('https://api.github.com/repos/'+repo(),{headers:ghHeaders(false)},12000) }).then(function(r){ return r.json().then(function(j){ out.push('GitHub write access: '+((j.permissions&&j.permissions.push)?'OK':'not confirmed')); }) }).catch(function(){ out.push('GitHub: network error') }).then(function(){
         return ai.json('Reply with JSON only: {"ok":true}').then(function(){ out.push('Gemini: OK') },function(e){ out.push('Gemini: '+aiErr(e)) });
       }).then(function(){ cfgMsg=out.join(' · '); render() });
       return;
