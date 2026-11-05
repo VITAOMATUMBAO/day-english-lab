@@ -326,6 +326,12 @@
       "answer": "She doesn’t know the answer",
       "tries": 1,
       "at": "2026-11-05T19:48:11.756Z"
+     },
+     "6": {
+      "ok": true,
+      "answer": "he doesn’t work on sunday",
+      "tries": 1,
+      "at": "2026-11-05T19:48:29.666Z"
      }
     }
    },
@@ -908,5 +914,5 @@
    }
   }
  },
- "rev": 58
+ "rev": 59
 }
