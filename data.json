@@ -548,10 +548,10 @@
     "count": 1,
     "from": "en",
     "src": "Yet",
-    "english": "Yet",
-    "portuguese": "No entanto, a",
-    "example": "",
-    "note": "",
+    "english": "yet",
+    "portuguese": "ainda / ainda não / já",
+    "example": "I have not finished the report yet.",
+    "note": "Use \"yet\" in negatives and questions with the present perfect.",
     "learned": true,
     "id": "wmw2xc432ny1"
    },
@@ -562,9 +562,9 @@
     "from": "en",
     "src": "swimsuit",
     "english": "swimsuit",
-    "portuguese": "fato de banho",
-    "example": "",
-    "note": "",
+    "portuguese": "maiô / roupa de banho",
+    "example": "Pack your swimsuit for the beach.",
+    "note": "Men: swim trunks. Women: swimsuit or bikini. In Australia people also say \"togs\".",
     "learned": false,
     "id": "wmw2xe5fpkjp"
    }
@@ -652,5 +652,5 @@
    }
   }
  },
- "rev": 9
+ "rev": 10
 }
