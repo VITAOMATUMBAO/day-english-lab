@@ -584,7 +584,14 @@
     "id": "wmw3ptv8itgw"
    }
   },
-  "returns": {},
+  "returns": {
+   "wmw3wpx5wrhl": {
+    "at": "2026-11-05T18:56:40.484Z",
+    "activityId": "a15",
+    "text": "He does not worked here.: He doesn’t worked here\nWe did not went to the meeting.: We didn’t go to the meeting\nDid you sent the report?: I didn’t f find mistake\nShe do not know the answer.: She doesn’t the answer\nI did wrote the email.: I did write the email\nShe ___ (send) the report every Monday.: She sends the report every monday\nHe ___ (not / work) on Sunday.: he doesn’t worked on sunday\nMy boss ___ (check) all the invoices.: My boss checks all the invoices",
+    "kind": "answer"
+   }
+  },
   "attempts": {},
   "usage": {},
   "meta": {
@@ -667,5 +674,5 @@
    }
   }
  },
- "rev": 14
+ "rev": 15
 }
