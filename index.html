@@ -759,7 +759,7 @@ a{color:var(--accent)}
     if(b.dataset.wfilter){ wfilter=b.dataset.wfilter; render(); return; }
     var act=b.dataset.act, id=b.dataset.id;
     if(act==='cfg-save'){
-      CFG.repo=($('cfg-repo').value||'').trim()||DEF_REPO; CFG.token=($('cfg-token').value||'').replace(/\s+/g,''); CFG.gemini=($('cfg-gemini').value||'').replace(/\s+/g,''); CFG.model=($('cfg-model').value||'').trim()||DEF_MODEL;
+      CFG.repo=($('cfg-repo').value||'').trim()||DEF_REPO; var nt=($('cfg-token').value||'').replace(/\s+/g,''), ng=($('cfg-gemini').value||'').replace(/\s+/g,''); if(nt) CFG.token=nt; if(ng) CFG.gemini=ng; CFG.model=($('cfg-model').value||'').trim()||DEF_MODEL;
       saveCfg(); cfgMsg='Saved on this device.'; loadData().then(function(){ cfgMsg='Saved. Data loaded.'; render() }).catch(function(){ cfgMsg='Saved, but the data could not be loaded. Check the repository name.'; render() }); render(); return;
     }
     if(act==='cfg-test'){
