@@ -460,8 +460,7 @@ a{color:var(--accent)}
       var u=new SpeechSynthesisUtterance(String(t||'')); u.lang='en-US'; u.rate=Math.min(1,rate||.9); u.volume=1;
       var v=pickVoice(); if(v){ u.voice=v; u.lang=v.lang; }
       u.onerror=function(ev){ if(msg&&ev&&ev.error!=='interrupted'&&ev.error!=='canceled') msg.textContent='Could not play the voice ('+ev.error+'). Check that the phone is not on silent and the volume is up.'; };
-      u.onstart=function(){ if(msg) msg.textContent='' };
-      setTimeout(function(){ try{ speechSynthesis.resume(); speechSynthesis.speak(u); }catch(e){} },60);
+      var started=false; u.onstart=function(){ started=true; if(msg) msg.textContent='' }; if(msg) msg.textContent='Playing… if you hear nothing, turn off silent mode (switch on the side of the iPhone) and raise the volume.'; speechSynthesis.speak(u); setTimeout(function(){ if(!started && msg && !speechSynthesis.speaking) msg.textContent='The phone did not start the voice. Check silent mode and volume, then tap Listen again.' },2500);
     }catch(e){ if(msg) msg.textContent='Could not play the voice.'; }
   }
   try{ speechSynthesis.getVoices(); if(speechSynthesis.addEventListener) speechSynthesis.addEventListener('voiceschanged',function(){voicesReady=true}); }catch(e){}
