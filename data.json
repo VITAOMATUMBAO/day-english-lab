@@ -212,11 +212,13 @@
     "kind": "extra",
     "minutes": 10,
     "order": "2026-11-03c",
-    "status": "marked",
-    "summary": "A short drill on does/did not + base verb and he/she + -s.",
+    "status": "partial",
+    "summary": "Retry done: past forms are better (did not go). Still check: after does not / doesn't, use the base verb (work, know).",
     "title": "10-minute Retry",
     "doneAt": "2026-11-05T18:56:47.103Z",
-    "userNote": "He does not worked here.: He doesn’t worked here | We did not went to the meeting.: We didn’t go to the meeting | Did you sent the report?: I didn’t f find mistake | She do not know the answer.: She d"
+    "userNote": "He does not worked here.: He doesn’t worked here | We did not went to the meeting.: We didn’t go to the meeting | Did you sent the report?: I didn’t f find mistake | She do not know the answer.: She d",
+    "scoreText": "4/8",
+    "pendingParts": ""
    },
    "a16": {
     "date": "2026-11-04",
@@ -396,6 +398,18 @@
     "got": 4,
     "label": "Day 9 B",
     "total": 6
+   },
+   "s_a15_retry": {
+    "date": "2026-11-05",
+    "label": "Retry: does / did not + base verb",
+    "got": 2,
+    "total": 5
+   },
+   "s_a15_s": {
+    "date": "2026-11-05",
+    "label": "Retry: he / she + -s",
+    "got": 2,
+    "total": 3
    }
   },
   "errors": {
@@ -468,6 +482,22 @@
     "note": "Mistakes with to/for, in/on and at on Oct 31.",
     "rule": "on + day (on Saturday), in + month or year (in March), at + time (at 8 pm). to and for change the meaning.",
     "status": "active"
+   },
+   "e_doesnt_base": {
+    "name": "Base verb after does not",
+    "status": "active",
+    "wrong": "He doesn't worked on Sunday.",
+    "right": "He does not work on Sunday.",
+    "rule": "After does / doesn't / did / didn't, the main verb stays in the base form.",
+    "note": "You did it right with \"didn't go\". Same rule for the present."
+   },
+   "e_missing_verb": {
+    "name": "Missing main verb",
+    "status": "active",
+    "wrong": "She doesn't the answer.",
+    "right": "She does not know the answer.",
+    "rule": "does not is only the helper. You still need the main verb (know).",
+    "note": ""
    }
   },
   "feed": {
@@ -515,6 +545,11 @@
     "date": "2026-11-04",
     "order": "2026-11-04c",
     "text": "G'day Lab was born, now in English with a translator. The Day 6-8 pack moved to the weekend (Nov 7-8), at your request."
+   },
+   "f20261105": {
+    "order": "2026-11-05",
+    "date": "2026-11-05",
+    "text": "Retry corrected: 4 of 8. Past negatives are better. Next: base verb after does not."
    }
   },
   "lookups": {
@@ -680,5 +715,5 @@
    }
   }
  },
- "rev": 27
+ "rev": 28
 }
