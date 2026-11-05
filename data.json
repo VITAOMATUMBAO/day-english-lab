@@ -212,9 +212,11 @@
     "kind": "extra",
     "minutes": 10,
     "order": "2026-11-03c",
-    "status": "pending",
+    "status": "marked",
     "summary": "A short drill on does/did not + base verb and he/she + -s.",
-    "title": "10-minute Retry"
+    "title": "10-minute Retry",
+    "doneAt": "2026-11-05T18:56:38.138Z",
+    "userNote": "He does not worked here.: He doesn’t worked here | We did not went to the meeting.: We didn’t go to the meeting | Did you sent the report?: I didn’t f find mistake | She do not know the answer.: She d"
    },
    "a16": {
     "date": "2026-11-04",
@@ -665,5 +667,5 @@
    }
   }
  },
- "rev": 13
+ "rev": 14
 }
