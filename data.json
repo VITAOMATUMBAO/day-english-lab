@@ -526,7 +526,7 @@
     "portuguese": "Fechamento mensal",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw2w5i91x7m"
    }
   },
@@ -613,5 +613,5 @@
    }
   }
  },
- "rev": 2
+ "rev": 3
 }
