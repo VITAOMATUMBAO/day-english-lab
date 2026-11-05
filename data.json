@@ -751,6 +751,19 @@
     "note": "",
     "learned": true,
     "id": "wmw450zr7u0v"
+   },
+   "wmw451ukp3mz": {
+    "at": "2026-11-05T22:49:53.929Z",
+    "lastAt": "2026-11-05T22:49:53.929Z",
+    "count": 1,
+    "from": "en",
+    "src": "equity",
+    "english": "equity",
+    "portuguese": "patrimônio líquido",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw451ukp3mz"
    }
   },
   "returns": {
@@ -951,5 +964,5 @@
    }
   }
  },
- "rev": 69
+ "rev": 70
 }
