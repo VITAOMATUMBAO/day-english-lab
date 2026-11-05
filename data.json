@@ -515,7 +515,21 @@
     "text": "G'day Lab was born, now in English with a translator. The Day 6-8 pack moved to the weekend (Nov 7-8), at your request."
    }
   },
-  "lookups": {},
+  "lookups": {
+   "wmw2w5i91x7m": {
+    "at": "2026-11-05T01:53:01.859Z",
+    "lastAt": "2026-11-05T01:53:01.859Z",
+    "count": 1,
+    "from": "pt",
+    "src": "Fechamento mensal",
+    "english": "Use monthly close",
+    "portuguese": "Fechamento mensal",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw2w5i91x7m"
+   }
+  },
   "returns": {},
   "attempts": {},
   "usage": {},
@@ -599,5 +613,5 @@
    }
   }
  },
- "rev": 1
+ "rev": 2
 }
