@@ -842,6 +842,12 @@
     "activityId": "a15",
     "text": "He does not worked here.: He does not work here\nWe did not went to the meeting.: We didn’t go to the meeting\nDid you sent the report?: did you send the report?\nShe do not know the answer.: Se doesn’t know the answer\nI did wrote the email.: I did write the email\nShe ___ (send) the report every Monday.: She sends the report every monday\nHe ___ (not / work) on Sunday.: He doesn’t works on sunday\nMy boss ___ (check) all the invoices.: My boss checks all the invoices",
     "kind": "answer"
+   },
+   "wmw44zk3p8o1": {
+    "at": "2026-11-05T22:48:07.045Z",
+    "activityId": "a15",
+    "text": "He does not worked here.: He does not work here\nWe did not went to the meeting.: We didn’t go to the meeting\nDid you sent the report?: did you send the report?\nShe do not know the answer.: Se doesn’t know the answer\nI did wrote the email.: I did write the email\nShe ___ (send) the report every Monday.: She sends the report every monday\nHe ___ (not / work) on Sunday.: He doesn’t works on sunday\nMy boss ___ (check) all the invoices.: My boss checks all the invoices",
+    "kind": "answer"
    }
   },
   "attempts": {},
@@ -926,5 +932,5 @@
    }
   }
  },
- "rev": 64
+ "rev": 65
 }
