@@ -1,0 +1,603 @@
+{
+ "collections": {
+  "activities": {
+   "a01": {
+    "date": "2026-10-26",
+    "kind": "core",
+    "order": "2026-10-26a",
+    "scoreText": "grammar 7/20 · reading 2/5",
+    "status": "done",
+    "summary": "Your first picture: grammar at guessing level, and about 60 words of writing with many mistakes.",
+    "title": "Diagnostic test"
+   },
+   "a02": {
+    "date": "2026-10-26",
+    "file": "English_Lesson_1_Verb_Forms.docx",
+    "kind": "core",
+    "order": "2026-10-26b",
+    "scoreText": "0/6 verbs written",
+    "status": "done",
+    "summary": "Too heavy: four structures in one lesson. The route changed to start with the basics.",
+    "title": "Lesson 1: verb forms"
+   },
+   "a03": {
+    "date": "2026-10-26",
+    "kind": "core",
+    "order": "2026-10-26c",
+    "scoreText": "34 · A2 Elementary",
+    "status": "done",
+    "summary": "Reading 35, listening 32. This is your measured starting point.",
+    "title": "Official EF SET"
+   },
+   "a04": {
+    "date": "2026-10-26",
+    "kind": "core",
+    "order": "2026-10-26d",
+    "scoreText": "done, not graded",
+    "status": "done",
+    "summary": "Marked as done at your request, with no grade.",
+    "title": "15-minute task"
+   },
+   "a05": {
+    "date": "2026-10-26",
+    "file": "Speaking_Check_Dictation.docx",
+    "kind": "extra",
+    "order": "2026-10-26e",
+    "pendingParts": "Part A (5 sentences) and Part C (2 explanations). The free answer was already done in other activities.",
+    "status": "pending",
+    "summary": "Five dictated sentences, one free answer and two sentences to explain. It is an invitation, with no deadline.",
+    "title": "Speaking check by dictation",
+    "blocks": [
+     {
+      "t": "text",
+      "title": "How this works",
+      "text": "You will say each sentence out loud. The app writes what it heard and gives short feedback. It is an estimate, not a score."
+     },
+     {
+      "t": "speak",
+      "title": "A. Introduce yourself",
+      "prompt": "Say 4 sentences: your name, your job, what you do every day, and one thing you need to do today."
+     },
+     {
+      "t": "speak",
+      "title": "B. Explain two things",
+      "prompt": "Explain in simple English: 1) what is a bank reconciliation? 2) why do you do it every month?"
+     }
+    ]
+   },
+   "a06": {
+    "date": "2026-10-27",
+    "file": "English_Day2_Base_Week1.docx",
+    "kind": "core",
+    "link": "https://www.youtube.com/watch?v=CD_Ypw10ifQ",
+    "order": "2026-10-27",
+    "pendingParts": "No reply seen yet.",
+    "status": "pending",
+    "summary": "Word classes, present and past simple, and a BBC English at Work video.",
+    "title": "Day 2: week 1 basics"
+   },
+   "a07": {
+    "date": "2026-10-28",
+    "file": "English_Day3_Past_Simple_Regular.docx",
+    "kind": "core",
+    "link": "https://www.youtube.com/watch?v=r2cf1qcltzY",
+    "order": "2026-10-28",
+    "pendingParts": "No reply seen yet.",
+    "status": "pending",
+    "summary": "Regular past verbs, did + base verb, word class.",
+    "title": "Day 3: regular past simple"
+   },
+   "a08": {
+    "date": "2026-10-29",
+    "file": "English_Day4_Past_Simple_Irregular.docx",
+    "kind": "core",
+    "order": "2026-10-29",
+    "pendingParts": "Part D (speaking by dictation).",
+    "scoreText": "A 6/8 · B 6/10 · C 5/5",
+    "status": "partial",
+    "summary": "Main mistakes: payd instead of paid, don't went, and did in positive sentences. In Part C you were right about 'Did you buy a car?' and the teacher's correction was wrong.",
+    "title": "Day 4: irregular past simple"
+   },
+   "a09": {
+    "date": "2026-10-31",
+    "file": "English_Weekend_Day4_Day5.docx",
+    "kind": "weekend",
+    "order": "2026-10-31",
+    "pendingParts": "Day 5: the rest of Part A, Part C and Part E.",
+    "scoreText": "Day 5 A: 1/8",
+    "status": "partial",
+    "summary": "Day 5 mixed regular and irregular past, reading, listening, writing and speaking. Your reading content was right. Your writing was one long sentence.",
+    "title": "Weekend: Day 4 and Day 5"
+   },
+   "a10": {
+    "date": "2026-11-01",
+    "file": "English_Day6_Short_Reset.docx",
+    "kind": "core",
+    "order": "2026-11-01",
+    "pendingParts": "Part C.",
+    "scoreText": "A 4/8 · B 4/4",
+    "status": "partial",
+    "summary": "Eight short sentences, negative and question in the past, and a 6-sentence dictation. Negatives and questions got better.",
+    "title": "Day 6: short reset"
+   },
+   "a11": {
+    "date": "2026-11-02",
+    "file": "English_Day7_Back_on_Track.docx",
+    "kind": "core",
+    "link": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/changing-meeting-time",
+    "order": "2026-11-02a",
+    "pendingParts": "All of Day 7.",
+    "status": "pending",
+    "summary": "A2 audio about changing a meeting time, a dictation and five sentences. It is part of the Day 6-7-8 pack.",
+    "title": "Day 7: back on track"
+   },
+   "a12": {
+    "date": "2026-11-02",
+    "file": "English_Vocab_Tracker.xlsx",
+    "kind": "extra",
+    "order": "2026-11-02b",
+    "pendingParts": "Reviews for day 1 and day 3.",
+    "status": "pending",
+    "summary": "Spaced review at +1, +3, +7 and +14 days, with a mistakes sheet.",
+    "title": "Vocab Tracker: 15 work words"
+   },
+   "a13": {
+    "date": "2026-11-03",
+    "file": "English_Day8_Office_People.docx",
+    "kind": "core",
+    "link": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/whos-who-office",
+    "order": "2026-11-03a",
+    "pendingParts": "Audio, dictation, speaking and vocabulary.",
+    "scoreText": "B 1/4",
+    "status": "partial",
+    "summary": "he/she + -s and office vocabulary. New focus: present simple in the third person.",
+    "title": "Day 8: people in the office"
+   },
+   "a14": {
+    "date": "2026-11-03",
+    "due": "Nov 7-8",
+    "file": "English_Pack_Days_6_7_8.docx",
+    "kind": "core",
+    "order": "2026-11-03b",
+    "pendingParts": "6C, Day 7 and Day 8 (audio, dictation, speaking, vocabulary).",
+    "status": "planned",
+    "summary": "The three days together. A partial correction is in English_Correction_Pack_6_7_8.docx. It waits for the weekend, with the listening task.",
+    "title": "Pack: Days 6, 7 and 8 (with correction)"
+   },
+   "a15": {
+    "blocks": [
+     {
+      "items": [
+       {
+        "p": "He does not worked here."
+       },
+       {
+        "p": "We did not went to the meeting."
+       },
+       {
+        "p": "Did you sent the report?"
+       },
+       {
+        "p": "She do not know the answer."
+       },
+       {
+        "p": "I did wrote the email."
+       }
+      ],
+      "t": "sentences",
+      "task": "Fix each sentence. Write the correct full sentence.",
+      "title": "Retry: does / did not + base verb"
+     },
+     {
+      "items": [
+       {
+        "hint": "positive: verb + s",
+        "p": "She ___ (send) the report every Monday."
+       },
+       {
+        "hint": "does not + base verb",
+        "p": "He ___ (not / work) on Sunday."
+       },
+       {
+        "hint": "verb + s",
+        "p": "My boss ___ (check) all the invoices."
+       }
+      ],
+      "t": "sentences",
+      "task": "Complete with the correct form.",
+      "title": "he / she + -s"
+     }
+    ],
+    "date": "2026-11-03",
+    "kind": "extra",
+    "minutes": 10,
+    "order": "2026-11-03c",
+    "status": "pending",
+    "summary": "A short drill on does/did not + base verb and he/she + -s.",
+    "title": "10-minute Retry"
+   },
+   "a16": {
+    "date": "2026-11-04",
+    "file": "English_Day9_NoAudio.docx",
+    "kind": "core",
+    "order": "2026-11-04",
+    "scoreText": "B 4/6 · dictation 4 of 4 matched",
+    "status": "done",
+    "summary": "No-audio version. he/she + -s was right (sends, shows) and your Did question was well formed. Free answer in the past: 3 of 5 parts right. Correction: English_Correction_Day9.docx.",
+    "title": "Day 9: morning briefing"
+   },
+   "a17": {
+    "blocks": [
+     {
+      "t": "text",
+      "text": "After did / did not / does not / Did you...? the verb stays in the base form.\nHe did not work. (not: did not worked)\nDid you send the report? (not: Did you sent)\nWith need: need + to + base verb. I need to check the account.\nArticles: a / an before a new singular noun, the for something already known.",
+      "title": "Rule of the day (2 min)"
+     },
+     {
+      "items": [
+       {
+        "hint": "He did not ...",
+        "p": "He worked on Saturday."
+       },
+       {
+        "hint": "I did not ...",
+        "p": "I went to the office yesterday."
+       },
+       {
+        "hint": "She does not ...",
+        "p": "She sends the report on Monday."
+       },
+       {
+        "hint": "We did not ...",
+        "p": "We paid the supplier last week."
+       },
+       {
+        "hint": "The client does not ...",
+        "p": "The client calls every day."
+       },
+       {
+        "hint": "They did not ...",
+        "p": "They checked the invoice."
+       }
+      ],
+      "t": "sentences",
+      "task": "Rewrite each sentence as a negative. Use did not or does not + base verb.",
+      "title": "A. Make it negative (did not / does not)"
+     },
+     {
+      "items": [
+       {
+        "hint": "I need to check ...",
+        "p": "I ___ (check) the supplier account."
+       },
+       {
+        "hint": "She needs to ...",
+        "p": "She ___ (send) the file today."
+       },
+       {
+        "hint": "We need to ...",
+        "p": "We ___ (pay) the invoice."
+       },
+       {
+        "hint": "He needs to ...",
+        "p": "He ___ (close) the month."
+       }
+      ],
+      "t": "sentences",
+      "task": "Complete with need to + the correct verb.",
+      "title": "B. Need to + verb"
+     },
+     {
+      "items": [
+       {
+        "hint": "first mention a/an, then the",
+        "p": "I sent ___ email to the client. ___ email was short."
+       },
+       {
+        "hint": "a specific test",
+        "p": "We studied for ___ test."
+       },
+       {
+        "hint": "a or an?",
+        "p": "She is ___ accountant."
+       },
+       {
+        "hint": "a / the",
+        "p": "He opened ___ file and read ___ report."
+       }
+      ],
+      "t": "sentences",
+      "task": "Write a, an or the in each sentence (rewrite the full sentence).",
+      "title": "C. Articles: a / an / the"
+     },
+     {
+      "prompt": "Write 4 short sentences about your work yesterday. Use at least one did not + verb and one need to + verb. Dictation is fine.",
+      "t": "write",
+      "title": "D. Your yesterday (4 short sentences)"
+     },
+     {
+      "t": "speak",
+      "title": "E. Say it today",
+      "prompt": "Record yourself saying 3 sentences about your work today. Use 'today' and one did not or need to. Speak slowly and clearly."
+     }
+    ],
+    "date": "2026-11-05",
+    "due": "Nov 5, 8 pm",
+    "kind": "core",
+    "minutes": 30,
+    "order": "2026-11-05",
+    "status": "planned",
+    "summary": "No audio. Focus: base verb after does/did not, need to + verb, articles.",
+    "title": "Day 10 (arrives at 6:47 am)"
+   },
+   "a18": {
+    "date": "2026-11-07",
+    "due": "Nov 7-8",
+    "kind": "weekend",
+    "order": "2026-11-07",
+    "status": "planned",
+    "summary": "Audio or video chosen by your teacher, plus the Day 6-7-8 pack. It is the only audio time of the week.",
+    "title": "Weekend: listening and film"
+   }
+  },
+  "scores": {
+   "s01": {
+    "date": "2026-10-26",
+    "got": 7,
+    "label": "Grammar test",
+    "total": 20
+   },
+   "s02": {
+    "date": "2026-10-26",
+    "got": 0,
+    "label": "Lesson 1 verbs",
+    "total": 6
+   },
+   "s03": {
+    "date": "2026-10-29",
+    "got": 6,
+    "label": "Day 4 A",
+    "total": 8
+   },
+   "s04": {
+    "date": "2026-10-31",
+    "got": 6,
+    "label": "Day 4 B",
+    "total": 10
+   },
+   "s05": {
+    "date": "2026-10-31",
+    "got": 5,
+    "label": "Day 4 C",
+    "total": 5
+   },
+   "s06": {
+    "date": "2026-11-03",
+    "got": 4,
+    "label": "Day 6 A",
+    "total": 8
+   },
+   "s07": {
+    "date": "2026-11-03",
+    "got": 4,
+    "label": "Day 6 B",
+    "total": 4
+   },
+   "s08": {
+    "date": "2026-11-03",
+    "got": 1,
+    "label": "Day 8 B",
+    "total": 4
+   },
+   "s09": {
+    "date": "2026-11-04",
+    "got": 4,
+    "label": "Day 9 B",
+    "total": 6
+   }
+  },
+  "errors": {
+   "e01": {
+    "name": "Verb after did / does not",
+    "note": "Negatives and questions in the past got better on Nov 3. On Nov 4 'does not Worked' still appeared.",
+    "right": "does not work · did not go",
+    "rule": "After did, did not, does not and Did you...?, the verb stays in the base form. The -ed goes only on did.",
+    "status": "improving",
+    "wrong": "does not Worked · don't went"
+   },
+   "e02": {
+    "name": "did in a positive sentence",
+    "note": "Seen in Day 4 Part B (Oct 31).",
+    "right": "wrote · took · came",
+    "rule": "In a positive past sentence, use the past verb with no did.",
+    "status": "active",
+    "wrong": "did write · did take · did come"
+   },
+   "e03": {
+    "name": "he / she + -s in the present",
+    "note": "On Nov 4: sends and shows were right.",
+    "right": "He sends · He does not send",
+    "rule": "Positive: verb + -s. With does or does not, the verb goes back to the base form, with no -s.",
+    "status": "improving",
+    "wrong": "does sends"
+   },
+   "e04": {
+    "name": "Articles a / an / the",
+    "note": "Also seen in 'a Claude plan' and 'the Saturday'.",
+    "right": "We studied for the test",
+    "rule": "A singular countable noun almost always needs a, an or the.",
+    "status": "active",
+    "wrong": "We studied for test"
+   },
+   "e05": {
+    "name": "Word class",
+    "note": "Your work vocabulary is already good. The problem is the form of the word.",
+    "right": "I build automations · supplier accounts · reconciled",
+    "rule": "Nouns, verbs and adjectives have different forms: analysis / analyze, account / accounting.",
+    "status": "active",
+    "wrong": "I make automation · supply accounts · reconciliate"
+   },
+   "e06": {
+    "name": "need to + verb",
+    "note": "Seen on Nov 4.",
+    "right": "I need to check the supplier account",
+    "rule": "After need comes to + the base verb.",
+    "status": "active",
+    "wrong": "I need check supply account"
+   },
+   "e07": {
+    "name": "Capital letters and apostrophes",
+    "note": "Some of this may be fast typing.",
+    "right": "Every Monday · didn't · doesn't",
+    "rule": "Days, months and names start with a capital letter. The apostrophe replaces the o in not.",
+    "status": "active",
+    "wrong": "Every monday · dindn't · does't"
+   },
+   "e08": {
+    "name": "Sentence without a verb",
+    "note": "On Nov 4 answers are still short, but the content is right.",
+    "right": "Some employees were worried that the meetings would move to other days.",
+    "rule": "Every answer is a sentence with a subject and a verb.",
+    "status": "improving",
+    "wrong": "The low productivity"
+   },
+   "e09": {
+    "name": "Prepositions with days and places",
+    "note": "Mistakes with to/for, in/on and at on Oct 31.",
+    "rule": "on + day (on Saturday), in + month or year (in March), at + time (at 8 pm). to and for change the meaning.",
+    "status": "active"
+   }
+  },
+  "feed": {
+   "f01": {
+    "date": "2026-10-26",
+    "order": "2026-10-26",
+    "text": "Start: diagnostic test (7/20), Lesson 1 (0/6 written) and EF SET 34, A2 Elementary. The route changed to start with the basics."
+   },
+   "f02": {
+    "date": "2026-10-29",
+    "order": "2026-10-29",
+    "text": "Day 4, Part A corrected: 6/8. Patterns: paid became payd, and don't went."
+   },
+   "f03": {
+    "date": "2026-10-31",
+    "order": "2026-10-31",
+    "text": "You wrote in English and asked for a harder Day 5. Day 4 B 6/10 and C 5/5. In Part C the teacher's correction was wrong and you were right."
+   },
+   "f04": {
+    "date": "2026-11-01",
+    "order": "2026-11-01",
+    "text": "Day 6: a 30-minute short reset with eight sentences and a dictation."
+   },
+   "f05": {
+    "date": "2026-11-02",
+    "order": "2026-11-02",
+    "text": "Day 7 and the Vocab Tracker were sent (15 work words, spaced review)."
+   },
+   "f06": {
+    "date": "2026-11-03",
+    "order": "2026-11-03",
+    "text": "Day 6-8 pack partly corrected. Better: did not + base verb and Did you send. New focus: he/she + -s, apostrophes, capital letters."
+   },
+   "f07": {
+    "date": "2026-11-04",
+    "order": "2026-11-04a",
+    "text": "Day 9 done in the chat: Part B 4/6, dictation 4 of 4 matched the reference. You asked for audio and film tasks only on weekends."
+   },
+   "f08": {
+    "date": "2026-11-04",
+    "order": "2026-11-04b",
+    "text": "Free answer in the past: 3 of 5 parts right (My workday went well; I prepared reports for the audit team; I also built an automation). Left to fix: reconciled, supplier accounts and customer advances."
+   },
+   "f09": {
+    "date": "2026-11-04",
+    "order": "2026-11-04c",
+    "text": "G'day Lab was born, now in English with a translator. The Day 6-8 pack moved to the weekend (Nov 7-8), at your request."
+   }
+  },
+  "lookups": {},
+  "returns": {},
+  "attempts": {},
+  "usage": {},
+  "meta": {
+   "current": {
+    "detail": "Open now: the 10-minute Retry, Day 4 Part D and Day 5. The Day 6-8 pack and the listening task wait for the weekend (Nov 7-8). There is no audio on weekdays.",
+    "due": "Day 6-8 pack by Nov 8",
+    "headline": "Next: Day 10, tomorrow at 6:47 am",
+    "minimal": "Send just 3 sentences in the past, or 1 dictation. Five minutes count.",
+    "returnDays": [
+     "2026-10-26",
+     "2026-10-29",
+     "2026-10-31",
+     "2026-11-03",
+     "2026-11-04"
+    ],
+    "startDate": "2026-10-26",
+    "teacherNote": "For the teacher. Collection attempts: AI checks Vitor ran in the app (at, activityId, patterns, fixes, ai=true, verified=false). They are NOT verified: review them and set verified=true or correct them. Collection usage/{date}: AI uses per day (cap 30). In lookups the app now writes rev (successful reviews), nextReview (ISO date), lastReview and learned (true after 5 correct reviews). Do not overwrite these fields; use them to choose vocabulary.",
+    "updatedAt": "2026-11-04"
+   }
+  },
+  "profile": {
+   "level": {
+    "efset": {
+     "band": "A2 Elementary",
+     "date": "2026-10-26",
+     "listening": 32,
+     "reading": 35,
+     "total": 34
+    },
+    "hoursNeeded": [
+     550,
+     800
+    ],
+    "nextTest": "EF SET again in about 8 weeks (Dec 2026)",
+    "skills": [
+     {
+      "basis": "EF SET on Oct 26. In open answers you still miss the main point of the text.",
+      "conf": "measured",
+      "hi": 35,
+      "level": "A2 (EF 35)",
+      "lo": 35,
+      "name": "Reading",
+      "trend": "Day 4: the content was right, but answers had no verb."
+     },
+     {
+      "basis": "EF SET on Oct 26, one point from the A1/A2 limit. No audio task done since then.",
+      "conf": "measured",
+      "hi": 32,
+      "level": "A2 (EF 32)",
+      "lo": 32,
+      "name": "Listening",
+      "trend": "Listening comes back on weekends, with audio and film."
+     },
+     {
+      "basis": "Lesson 1 and the corrections from Day 4 to Day 9: short sentences and many verb-form mistakes.",
+      "conf": "estimated",
+      "hi": 34,
+      "level": "high A1 to low A2",
+      "lo": 28,
+      "name": "Writing",
+      "trend": "Getting better: negatives and questions in the past. Still missing: base verb, articles, capital letters."
+     },
+     {
+      "basis": "Only dictated text arrives. We can judge content, grammar and vocabulary, not pronunciation or fluency.",
+      "conf": "no-data",
+      "level": "Not measured",
+      "name": "Speaking",
+      "trend": "Day 9 dictation: 4 of 4 sentences matched the reference. This is a weak signal, not a score."
+     },
+     {
+      "basis": "Test on Oct 26: 7/20. Writing exercises from Day 4 to Day 9 range from 25% to 100%.",
+      "conf": "estimated",
+      "hi": 35,
+      "level": "low A2",
+      "lo": 29,
+      "name": "Grammar (writing it)",
+      "trend": "Current focus: base verb after did/does not, he/she + -s, articles."
+     }
+    ]
+   }
+  }
+ },
+ "rev": 1
+}
