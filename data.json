@@ -736,7 +736,7 @@
     "portuguese": "Ativo",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw3ptv8itgw"
    }
   },
@@ -938,5 +938,5 @@
    }
   }
  },
- "rev": 66
+ "rev": 67
 }
