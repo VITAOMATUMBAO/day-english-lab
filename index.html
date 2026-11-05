@@ -296,21 +296,26 @@ a{color:var(--accent)}
   /* ---------- AI: Gemini with your own key (saved only on this device) ---------- */
   var ai = { json:function(prompt,audio){
     if(!CFG.gemini) return Promise.reject({code:'no-key'});
-    var model=CFG.model||DEF_MODEL;
-    return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:JSON.stringify({contents:[{role:'user',parts:[{text:prompt}].concat(audio?[{inline_data:{mime_type:audio.mime,data:audio.data}}]:[])}],generationConfig:{responseMimeType:'application/json',temperature:.2,maxOutputTokens:900}})}).then(function(r){
-      if(r.status===429) throw {code:'rate_limited'};
-      if(r.status===400||r.status===403) throw {code:'bad-key'};
-      if(!r.ok) throw {code:'ai-'+r.status};
-      return r.json();
-    }).then(function(j){
+    var models=[CFG.model||DEF_MODEL,'gemini-2.5-flash','gemini-2.0-flash'].filter(function(m,i,a){return m&&a.indexOf(m)===i});
+    var body=JSON.stringify({contents:[{role:'user',parts:[{text:prompt}].concat(audio?[{inline_data:{mime_type:audio.mime,data:audio.data}}]:[])}],generationConfig:{responseMimeType:'application/json',temperature:.2,maxOutputTokens:900}});
+    function tryModel(i){
+      return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+models[i]+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body}).then(function(r){
+        if(r.status===404 && i<models.length-1) return tryModel(i+1);
+        if(r.status===429) throw {code:'rate_limited'};
+        if(r.status===400||r.status===401||r.status===403){ return r.text().then(function(t){ throw {code:'bad-key',detail:r.status+' '+t.slice(0,160)} }) }
+        if(!r.ok) throw {code:'ai-'+r.status};
+        return r.json();
+      });
+    }
+    return tryModel(0).then(function(j){
       var t=((((j.candidates||[])[0]||{}).content||{}).parts||[]).map(function(p){return p.text||''}).join('');
       t=t.replace(/^```json|```$/g,'').trim();
-      return JSON.parse(t);
-    });
+      try{ return JSON.parse(t) }catch(e){ throw {code:'ai-parse',detail:t.slice(0,120)} }
+    },function(e){ if(e&&e.code) throw e; throw {code:'ai-network',detail:String(e&&e.message||e)} });
   }};
   function aiErr(e){
     var c=e&&e.code;
-    return c==='no-key'?'Add your Gemini key in Settings to use the AI.':c==='bad-key'?'The Gemini key was refused. Check it in Settings.':c==='rate_limited'?'Too many requests. Wait a minute.':'The AI is not available right now. You can still send your reply.';
+    return c==='no-key'?'Add your Gemini key in Settings to use the AI.':c==='bad-key'?'The Gemini key was refused ('+((e&&e.detail)||'')+'). Check it in Settings.':c==='rate_limited'?'Too many requests. Wait a minute.':'The AI is not available right now ['+c+(e&&e.detail?': '+e.detail:'')+']. You can still send your reply.';
   }
 
   /* ---------- data ---------- */
@@ -754,7 +759,7 @@ a{color:var(--accent)}
     if(b.dataset.wfilter){ wfilter=b.dataset.wfilter; render(); return; }
     var act=b.dataset.act, id=b.dataset.id;
     if(act==='cfg-save'){
-      CFG.repo=($('cfg-repo').value||'').trim()||DEF_REPO; CFG.token=($('cfg-token').value||'').trim(); CFG.gemini=($('cfg-gemini').value||'').trim(); CFG.model=($('cfg-model').value||'').trim()||DEF_MODEL;
+      CFG.repo=($('cfg-repo').value||'').trim()||DEF_REPO; CFG.token=($('cfg-token').value||'').replace(/\s+/g,''); CFG.gemini=($('cfg-gemini').value||'').replace(/\s+/g,''); CFG.model=($('cfg-model').value||'').trim()||DEF_MODEL;
       saveCfg(); cfgMsg='Saved on this device.'; loadData().then(function(){ cfgMsg='Saved. Data loaded.'; render() }).catch(function(){ cfgMsg='Saved, but the data could not be loaded. Check the repository name.'; render() }); render(); return;
     }
     if(act==='cfg-test'){
