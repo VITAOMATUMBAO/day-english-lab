@@ -256,7 +256,8 @@
        "yours": "He doesn't worked here",
        "ok": false,
        "right": "He does not work here.",
-       "why": "After does not, the verb stays in the base form: work."
+       "why": "After does not, the verb stays in the base form: work.",
+       "pattern": "Verb after did / does not"
       },
       {
        "q": "We did not went to the meeting.",
@@ -269,14 +270,16 @@
        "yours": "I didn't f find mistake",
        "ok": false,
        "right": "Did you send the report?",
-       "why": "You wrote a different sentence. After Did you, use the base verb: send."
+       "why": "You wrote a different sentence. After Did you, use the base verb: send.",
+       "pattern": "Verb after did / does not"
       },
       {
        "q": "She do not know the answer.",
        "yours": "She doesn't the answer",
        "ok": false,
        "right": "She does not know the answer.",
-       "why": "does not is only the helper. You still need the main verb: know."
+       "why": "does not is only the helper. You still need the main verb: know.",
+       "pattern": "Verb after did / does not"
       },
       {
        "q": "I did wrote the email.",
@@ -288,14 +291,16 @@
        "q": "She ___ (send) the report every Monday.",
        "yours": "She sends the report every monday",
        "ok": true,
-       "why": "Verb + s is right. Write Monday with a capital M."
+       "why": "Verb + s is right. Write Monday with a capital M.",
+       "pattern": "Capital letters and apostrophes"
       },
       {
        "q": "He ___ (not / work) on Sunday.",
        "yours": "he doesn't worked on sunday",
        "ok": false,
        "right": "He does not work on Sunday.",
-       "why": "Base verb after doesn't. Capital letters for Sunday and at the start."
+       "why": "Base verb after doesn't. Capital letters for Sunday and at the start.",
+       "pattern": "Verb after did / does not"
       },
       {
        "q": "My boss ___ (check) all the invoices.",
@@ -618,6 +623,38 @@
     "wrong": "She doesn't the answer.",
     "right": "She does not know the answer.",
     "rule": "does not is only the helper. You still need the main verb (know).",
+    "note": ""
+   },
+   "e10": {
+    "name": "Irregular past forms",
+    "status": "active",
+    "wrong": "He payd the invoice.",
+    "right": "He paid the invoice.",
+    "rule": "Learn the irregular past: pay - paid, take - took, come - came.",
+    "note": ""
+   },
+   "e11": {
+    "name": "Spelling and typos",
+    "status": "active",
+    "wrong": "Helo",
+    "right": "Hello",
+    "rule": "Check each word once before you send. Use the Translator if you are not sure.",
+    "note": ""
+   },
+   "e12": {
+    "name": "Word choice",
+    "status": "active",
+    "wrong": "I make automation.",
+    "right": "I build automations.",
+    "rule": "Some words go together. Learn the pair: build automations, do your best.",
+    "note": ""
+   },
+   "e13": {
+    "name": "Verb forms",
+    "status": "active",
+    "wrong": "My work days is went",
+    "right": "My workday went well.",
+    "rule": "One sentence, one main verb. Do not put is and went together.",
     "note": ""
    }
   },
@@ -962,7 +999,261 @@
      }
     ]
    }
+  },
+  "mistakes": {
+   "m01": {
+    "date": "2026-10-29",
+    "pattern": "Irregular past forms",
+    "wrong": "He payd the invoice.",
+    "right": "He paid the invoice.",
+    "why": "Pay is irregular: pay - paid. Do not add -ed.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m02": {
+    "date": "2026-10-29",
+    "pattern": "Verb after did / does not",
+    "wrong": "I don't went to the office.",
+    "right": "I did not go to the office.",
+    "why": "Use did not + base verb for the past negative.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m03": {
+    "date": "2026-10-31",
+    "pattern": "did in a positive sentence",
+    "wrong": "She did take the bus.",
+    "right": "She took the bus.",
+    "why": "In a positive past sentence, use the past form (took). Use \"did\" only in questions and negatives.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m04": {
+    "date": "2026-10-31",
+    "pattern": "did in a positive sentence",
+    "wrong": "We did come early.",
+    "right": "We came early.",
+    "why": "Positive past sentence: came, not did come.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m05": {
+    "date": "2026-10-31",
+    "pattern": "did in a positive sentence",
+    "wrong": "He did pay the bill.",
+    "right": "He paid the bill.",
+    "why": "Positive past sentence: paid, not did pay.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m06": {
+    "date": "2026-10-31",
+    "pattern": "Word choice",
+    "wrong": "I do my better.",
+    "right": "I do my best.",
+    "why": "The fixed phrase is \"do my best\".",
+    "fixed": false,
+    "tries": 0
+   },
+   "m07": {
+    "date": "2026-10-31",
+    "pattern": "Sentence without a verb",
+    "wrong": "I so exited",
+    "right": "I am so excited.",
+    "why": "You need the verb am. Check the spelling: excited.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m08": {
+    "date": "2026-10-31",
+    "pattern": "Spelling and typos",
+    "wrong": "Helo",
+    "right": "Hello",
+    "why": "Hello has two l.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m09": {
+    "date": "2026-10-31",
+    "pattern": "Spelling and typos",
+    "wrong": "dind't",
+    "right": "didn't",
+    "why": "The apostrophe replaces the o in did not: didn't.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m10": {
+    "date": "2026-10-31",
+    "pattern": "Spelling and typos",
+    "wrong": "activies",
+    "right": "activities",
+    "why": "activities: acti-vi-ties.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m11": {
+    "date": "2026-10-31",
+    "pattern": "Word choice",
+    "wrong": "better hard",
+    "right": "harder",
+    "why": "Short adjective or adverb + er: hard - harder.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m12": {
+    "date": "2026-10-31",
+    "pattern": "Capital letters and apostrophes",
+    "wrong": "english",
+    "right": "English",
+    "why": "Languages start with a capital letter.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m13": {
+    "date": "2026-10-31",
+    "pattern": "Capital letters and apostrophes",
+    "wrong": "I was tired, But I worked.",
+    "right": "I was tired, but I worked.",
+    "why": "After a comma, \"but\" has a small b.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m14": {
+    "date": "2026-10-31",
+    "pattern": "Prepositions with days and places",
+    "wrong": "the Saturday",
+    "right": "on Saturday",
+    "why": "Use on + day, without the.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m15": {
+    "date": "2026-10-31",
+    "pattern": "Articles a / an / the",
+    "wrong": "I have Claude plan.",
+    "right": "I have a Claude plan.",
+    "why": "Use a before a singular noun: a plan.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m16": {
+    "date": "2026-11-03",
+    "pattern": "Capital letters and apostrophes",
+    "wrong": "dindn't",
+    "right": "didn't",
+    "why": "Short form of did not: didn't.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m17": {
+    "date": "2026-11-03",
+    "pattern": "Capital letters and apostrophes",
+    "wrong": "does't",
+    "right": "doesn't",
+    "why": "Short form of does not: doesn't.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m18": {
+    "date": "2026-11-03",
+    "pattern": "Capital letters and apostrophes",
+    "wrong": "Every monday",
+    "right": "Every Monday",
+    "why": "Days of the week start with a capital letter.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m19": {
+    "date": "2026-11-03",
+    "pattern": "he / she + -s in the present",
+    "wrong": "He does sends the report.",
+    "right": "He sends the report.",
+    "why": "Do not use does and a verb with -s together. Use one: He sends.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m20": {
+    "date": "2026-11-03",
+    "pattern": "Spelling and typos",
+    "wrong": "persona",
+    "right": "person",
+    "why": "In English the word is person.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m21": {
+    "date": "2026-11-04",
+    "pattern": "Verb after did / does not",
+    "wrong": "He does not Worked on Saturday.",
+    "right": "He does not work on Saturday.",
+    "why": "After does not, use the base verb: work.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m22": {
+    "date": "2026-11-04",
+    "pattern": "need to + verb",
+    "wrong": "I need check supply account.",
+    "right": "I need to check the supplier account.",
+    "why": "Use need to + verb. Add the article the.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m23": {
+    "date": "2026-11-04",
+    "pattern": "Verb forms",
+    "wrong": "My work days is went",
+    "right": "My workday went well.",
+    "why": "Is and went do not go together. Use one verb: went.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m24": {
+    "date": "2026-11-04",
+    "pattern": "Word choice",
+    "wrong": "accounts for supply",
+    "right": "supplier accounts",
+    "why": "Say supplier accounts: noun + noun.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m25": {
+    "date": "2026-11-04",
+    "pattern": "Word choice",
+    "wrong": "I make automation",
+    "right": "I build automations.",
+    "why": "Use build (or automate) with automations.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m26": {
+    "date": "2026-11-04",
+    "pattern": "Word choice",
+    "wrong": "reconciliate",
+    "right": "reconciled",
+    "why": "The English verb is reconcile. Past: reconciled.",
+    "fixed": false,
+    "tries": 0
+   },
+   "m27": {
+    "date": "2026-11-04",
+    "pattern": "Word choice",
+    "wrong": "advanced customers",
+    "right": "customer advances",
+    "why": "Say customer advances (money received in advance).",
+    "fixed": false,
+    "tries": 0
+   },
+   "m28": {
+    "date": "2026-11-05",
+    "pattern": "Spelling and typos",
+    "wrong": "Se doesn't know the answer.",
+    "right": "She doesn't know the answer.",
+    "why": "She is spelled s-h-e.",
+    "fixed": false,
+    "tries": 0
+   }
   }
  },
- "rev": 71
+ "rev": 72
 }
