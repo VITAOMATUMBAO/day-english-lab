@@ -565,7 +565,7 @@
     "portuguese": "maiô / roupa de banho",
     "example": "Pack your swimsuit for the beach.",
     "note": "Men: swim trunks. Women: swimsuit or bikini. In Australia people also say \"togs\".",
-    "learned": false,
+    "learned": true,
     "id": "wmw2xe5fpkjp"
    }
   },
@@ -652,5 +652,5 @@
    }
   }
  },
- "rev": 10
+ "rev": 11
 }
