@@ -554,6 +554,19 @@
     "note": "",
     "learned": true,
     "id": "wmw2xc432ny1"
+   },
+   "wmw2xe5fpkjp": {
+    "at": "2026-11-05T02:27:44.771Z",
+    "lastAt": "2026-11-05T02:27:44.771Z",
+    "count": 1,
+    "from": "en",
+    "src": "swimsuit",
+    "english": "swimsuit",
+    "portuguese": "fato de banho",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw2xe5fpkjp"
    }
   },
   "returns": {},
@@ -639,5 +652,5 @@
    }
   }
  },
- "rev": 8
+ "rev": 9
 }
