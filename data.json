@@ -317,9 +317,9 @@
      },
      "2": {
       "ok": false,
-      "answer": "I did send mistake",
-      "tries": 6,
-      "at": "2026-11-05T19:36:29.664Z"
+      "answer": "I didn’t find mistake",
+      "tries": 7,
+      "at": "2026-11-05T19:46:27.175Z"
      }
     }
    },
@@ -866,5 +866,5 @@
    }
   }
  },
- "rev": 46
+ "rev": 47
 }
