@@ -452,7 +452,7 @@ a{color:var(--accent)}
   }
   var voicesReady=false;
   function pickVoice(){ var vs=speechSynthesis.getVoices()||[]; return vs.filter(function(x){return /^en[-_]AU/i.test(x.lang)})[0]||vs.filter(function(x){return /^en[-_](GB|US)/i.test(x.lang)})[0]||vs.filter(function(x){return /^en/i.test(x.lang)})[0] }
-  function speak(t,rate){
+  function speakBrowser(t,rate){
     var msg=$('conn');
     if(!('speechSynthesis' in window)){ if(msg) msg.textContent='This browser cannot read text aloud.'; return; }
     try{
@@ -462,6 +462,56 @@ a{color:var(--accent)}
       u.onerror=function(ev){ if(msg&&ev&&ev.error!=='interrupted'&&ev.error!=='canceled') msg.textContent='Could not play the voice ('+ev.error+'). Check that the phone is not on silent and the volume is up.'; };
       var started=false; u.onstart=function(){ started=true; if(msg) msg.textContent='' }; if(msg) msg.textContent='Playing… if you hear nothing, turn off silent mode (switch on the side of the iPhone) and raise the volume.'; speechSynthesis.speak(u); setTimeout(function(){ if(!started && msg && !speechSynthesis.speaking) msg.textContent='The phone did not start the voice. Check silent mode and volume, then tap Listen again.' },2500);
     }catch(e){ if(msg) msg.textContent='Could not play the voice.'; }
+  }
+
+  /* AI voice: plays as normal audio, so it works with the iPhone on silent */
+  var SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+  var voiceEl=null, voiceMem={};
+  function pcmToWav(b64){
+    var bin=atob(b64), n=bin.length, buf=new ArrayBuffer(44+n), v=new DataView(buf);
+    function w(o,str){ for(var i=0;i<str.length;i++) v.setUint8(o+i,str.charCodeAt(i)) }
+    w(0,'RIFF'); v.setUint32(4,36+n,true); w(8,'WAVE'); w(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,24000,true); v.setUint32(28,48000,true); v.setUint16(32,2,true); v.setUint16(34,16,true); w(36,'data'); v.setUint32(40,n,true);
+    var u8=new Uint8Array(buf); for(var i=0;i<n;i++) u8[44+i]=bin.charCodeAt(i);
+    return new Blob([buf],{type:'audio/wav'});
+  }
+  function aiVoice(text,slow){
+    var k=(slow?'s:':'n:')+text;
+    if(voiceMem[k]) return Promise.resolve(voiceMem[k]);
+    var cacheKey='https://voice.local/'+encodeURIComponent(k);
+    var fromCache=('caches' in window)?caches.open('gday-voice').then(function(c){return c.match(cacheKey).then(function(r){return r?r.blob():null})}).catch(function(){return null}):Promise.resolve(null);
+    return fromCache.then(function(b){
+      if(b){ voiceMem[k]=b; return b }
+      if(!CFG.gemini) throw {code:'no-key'};
+      var body=JSON.stringify({contents:[{parts:[{text:(slow?'Say this slowly and clearly in a friendly Australian-English accent: ':'Say this clearly in a friendly Australian-English accent: ')+text}]}],generationConfig:{responseModalities:['AUDIO'],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:'Kore'}}}}});
+      return fetchT('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},25000).then(function(r){
+        if(!r.ok) throw {code:'tts-'+r.status};
+        return r.json();
+      }).then(function(j){
+        var p=(((j.candidates||[])[0]||{}).content||{}).parts||[], d=p[0]&&p[0].inlineData&&p[0].inlineData.data;
+        if(!d) throw {code:'tts-empty'};
+        var blob=pcmToWav(d); voiceMem[k]=blob;
+        try{ if('caches' in window) caches.open('gday-voice').then(function(c){c.put(cacheKey,new Response(blob))}) }catch(e){}
+        return blob;
+      });
+    });
+  }
+  function speak(t,rate){
+    t=String(t||''); if(!t) return;
+    var msg=$('conn');
+    try{ if('speechSynthesis' in window) speechSynthesis.cancel(); }catch(e){}
+    if(!CFG.gemini){ return speakBrowser(t,rate); }
+    // unlock the audio element inside the tap, then load the real sound
+    if(!voiceEl){ voiceEl=new Audio(); voiceEl.preload='auto'; voiceEl.setAttribute('playsinline','') }
+    try{ voiceEl.pause(); voiceEl.src=SILENT; var pr=voiceEl.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(e){}
+    if(msg) msg.textContent='Getting the voice…';
+    aiVoice(t,(rate||.9)<.8).then(function(blob){
+      voiceEl.src=URL.createObjectURL(blob);
+      voiceEl.onplaying=function(){ if(msg) msg.textContent='' };
+      return voiceEl.play();
+    }).then(function(){ if(msg) msg.textContent='' }).catch(function(e){
+      if(msg) msg.textContent='';
+      speakBrowser(t,rate);
+    });
   }
   try{ speechSynthesis.getVoices(); if(speechSynthesis.addEventListener) speechSynthesis.addEventListener('voiceschanged',function(){voicesReady=true}); }catch(e){}
 
@@ -837,7 +887,7 @@ a{color:var(--accent)}
     if(act==='translate'){ translate(($('tr-in')||{}).value||''); return; }
     if(act==='speak'){ speak(b.dataset.text||'',Number(b.dataset.rate)||.9); return; }
     if(act==='rec'){ toggleRec(b.dataset.k); return; }
-    if(act==='stopspeak'){ try{speechSynthesis.cancel()}catch(e){} return; }
+    if(act==='stopspeak'){ try{speechSynthesis.cancel()}catch(e){} try{ if(voiceEl) voiceEl.pause() }catch(e){} return; }
     if(act==='check' && id){ checkAnswer(id); return; }
     if((act==='rv-check'||act==='rv-skip') && id){
       var rw=S.words.find(function(x){return x.id===id}); if(!rw||!db) return;
