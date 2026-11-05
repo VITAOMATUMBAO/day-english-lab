@@ -567,6 +567,19 @@
     "note": "Men: swim trunks. Women: swimsuit or bikini. In Australia people also say \"togs\".",
     "learned": true,
     "id": "wmw2xe5fpkjp"
+   },
+   "wmw3ptv8itgw": {
+    "at": "2026-11-05T15:43:47.296Z",
+    "lastAt": "2026-11-05T15:43:47.296Z",
+    "count": 1,
+    "from": "pt",
+    "src": "Ativo",
+    "english": "Asset",
+    "portuguese": "Ativo",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw3ptv8itgw"
    }
   },
   "returns": {},
@@ -652,5 +665,5 @@
    }
   }
  },
- "rev": 12
+ "rev": 13
 }
