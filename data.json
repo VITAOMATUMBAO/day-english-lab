@@ -541,6 +541,19 @@
     "note": "ASAP is short for \"as soon as possible\".",
     "learned": true,
     "id": "wmw2w9t41nhb"
+   },
+   "wmw2xc432ny1": {
+    "at": "2026-11-05T02:26:09.709Z",
+    "lastAt": "2026-11-05T02:26:09.709Z",
+    "count": 1,
+    "from": "en",
+    "src": "Yet",
+    "english": "Yet",
+    "portuguese": "No entanto, a",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw2xc432ny1"
    }
   },
   "returns": {},
@@ -626,5 +639,5 @@
    }
   }
  },
- "rev": 6
+ "rev": 7
 }
