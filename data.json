@@ -243,7 +243,7 @@
     "status": "marked",
     "summary": "Retry done: past forms are better (did not go). Still check: after does not / doesn't, use the base verb (work, know).",
     "title": "10-minute Retry",
-    "doneAt": "2026-11-05T22:47:27.445Z",
+    "doneAt": "2026-11-05T22:48:04.967Z",
     "userNote": "He does not worked here.: He does not work here | We did not went to the meeting.: We didn’t go to the meeting | Did you sent the report?: did you send the report? | She do not know the answer.: Se do",
     "scoreText": "4/8",
     "pendingParts": "",
@@ -926,5 +926,5 @@
    }
   }
  },
- "rev": 62
+ "rev": 63
 }
