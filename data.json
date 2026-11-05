@@ -528,6 +528,19 @@
     "note": "",
     "learned": true,
     "id": "wmw2w5i91x7m"
+   },
+   "wmw2w9t41nhb": {
+    "at": "2026-11-05T01:56:22.560Z",
+    "lastAt": "2026-11-05T01:56:22.560Z",
+    "count": 1,
+    "from": "pt",
+    "src": "ASAP",
+    "english": "Act in Support of Ammunition Production",
+    "portuguese": "ASAP",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw2w9t41nhb"
    }
   },
   "returns": {},
@@ -613,5 +626,5 @@
    }
   }
  },
- "rev": 3
+ "rev": 4
 }
