@@ -827,6 +827,19 @@
     "note": "",
     "learned": false,
     "id": "wmw48cgn2p2a"
+   },
+   "wmw48cq4blp1": {
+    "at": "2026-11-06T00:22:20.219Z",
+    "lastAt": "2026-11-06T00:22:20.219Z",
+    "count": 1,
+    "from": "en",
+    "src": "took",
+    "english": "took",
+    "portuguese": "Pego, Pegado",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw48cq4blp1"
    }
   },
   "returns": {
@@ -1281,5 +1294,5 @@
    }
   }
  },
- "rev": 74
+ "rev": 75
 }
