@@ -448,12 +448,12 @@
      }
     ],
     "date": "2026-11-05",
-    "due": "Nov 5, 8 pm",
+    "due": "Optional, until Nov 8",
     "kind": "core",
     "minutes": 30,
     "order": "2026-11-05",
     "status": "planned",
-    "summary": "No audio. Focus: base verb after does/did not, need to + verb, articles.",
+    "summary": "Optional make-up until Nov 8. No audio. Negatives, need to, articles.",
     "title": "Day 10: negatives, need to, articles",
     "theme": "Grammar",
     "topic": "Negatives: does / did not + base verb"
@@ -468,6 +468,149 @@
     "title": "Weekend: listening and film",
     "theme": "Listening",
     "topic": "Audio and film"
+   },
+   "a19": {
+    "date": "2026-11-06",
+    "due": "Nov 6, 8 pm",
+    "kind": "core",
+    "minutes": 30,
+    "order": "2026-11-06",
+    "status": "planned",
+    "theme": "Grammar",
+    "topic": "Articles",
+    "title": "Day 11: articles and past forms",
+    "summary": "No audio. Articles (a / an / the), base verb after did / does not, and past forms took, came, paid, told. Plus your translator words.",
+    "blocks": [
+     {
+      "t": "text",
+      "title": "Rule of the day (2 min)",
+      "text": "a / an = one thing, not known yet. a plan, an invoice.\nthe = a thing we both know. I sent an email. The email was short.\nNo article for languages, days and months: English, Monday, November.\nAfter did / does not, use the base verb: He did not take the bus. She does not know.\nIn a positive past sentence, use the past form: She took the bus. (not: She did take)\nIrregular past: take - took, come - came, pay - paid, tell - told."
+     },
+     {
+      "t": "sentences",
+      "title": "A. Articles: a, an or the",
+      "task": "Rewrite each full sentence with a, an or the.",
+      "items": [
+       {
+        "p": "I have ___ Claude plan.",
+        "hint": "a new thing"
+       },
+       {
+        "p": "She is ___ accountant.",
+        "hint": "a or an?"
+       },
+       {
+        "p": "I sent ___ invoice. ___ invoice was late.",
+        "hint": "first mention, then the"
+       },
+       {
+        "p": "We closed the month on ___ Friday.",
+        "hint": "days: no article. Write the sentence with on Friday"
+       },
+       {
+        "p": "He needs ___ report for ___ audit.",
+        "hint": "a report, the audit"
+       },
+       {
+        "p": "I study ___ English every day.",
+        "hint": "languages: no article"
+       }
+      ]
+     },
+     {
+      "t": "sentences",
+      "title": "B. Did not / does not + base verb",
+      "task": "Make each sentence negative.",
+      "items": [
+       {
+        "p": "She knows the answer.",
+        "hint": "She does not ..."
+       },
+       {
+        "p": "We went to the meeting.",
+        "hint": "We did not ..."
+       },
+       {
+        "p": "He works on Sunday.",
+        "hint": "He does not ..."
+       },
+       {
+        "p": "They paid the bill.",
+        "hint": "They did not ..."
+       },
+       {
+        "p": "I took the bus today.",
+        "hint": "I did not ..."
+       }
+      ]
+     },
+     {
+      "t": "sentences",
+      "title": "C. Past forms: took, came, paid, told",
+      "task": "Write the past simple (positive).",
+      "items": [
+       {
+        "p": "Yesterday I (take) the bus to work.",
+        "hint": "took"
+       },
+       {
+        "p": "The client (come) to the office at nine.",
+        "hint": "came"
+       },
+       {
+        "p": "We (pay) the supplier last week.",
+        "hint": "paid"
+       },
+       {
+        "p": "She (tell) me the answer.",
+        "hint": "told"
+       },
+       {
+        "p": "They (send) the report on Monday.",
+        "hint": "sent"
+       }
+      ]
+     },
+     {
+      "t": "sentences",
+      "title": "D. Your words from the Translator",
+      "task": "Write one short sentence with each word.",
+      "items": [
+       {
+        "p": "balancing",
+        "hint": "I am balancing the accounts today."
+       },
+       {
+        "p": "equity",
+        "hint": "patrimonio liquido"
+       },
+       {
+        "p": "sold out",
+        "hint": "esgotado"
+       },
+       {
+        "p": "currently",
+        "hint": "atualmente"
+       }
+      ]
+     },
+     {
+      "t": "dictation",
+      "title": "E. Dictation",
+      "task": "Listen and type what you hear. Use the Slow button if you need it.",
+      "items": [
+       "I took the bus to the office today.",
+       "She does not know the answer.",
+       "We paid the invoice on Friday.",
+       "He told me about a new report."
+      ]
+     },
+     {
+      "t": "speak",
+      "title": "F. Say it today",
+      "prompt": "Record 3 sentences about your work today. Use took, came or paid, and one did not. Example: Today I took the bus. I did not go to the meeting. Speak slowly."
+     }
+    ]
    }
   },
   "scores": {
@@ -708,6 +851,11 @@
     "order": "2026-11-05",
     "date": "2026-11-05",
     "text": "Retry corrected: 4 of 8. Past negatives are better. Next: base verb after does not."
+   },
+   "f20261106": {
+    "order": "2026-11-06",
+    "date": "2026-11-06",
+    "text": "Retry again: 7 of 8 right. Day 11 is ready: articles and past forms. Day 10 is an optional make-up."
    }
   },
   "lookups": {
@@ -835,8 +983,8 @@
     "from": "en",
     "src": "took",
     "english": "took",
-    "portuguese": "Pego, Pegado",
-    "example": "",
+    "portuguese": "pegou, levou (passado de \"take\")",
+    "example": "I took the bus to work.",
     "note": "",
     "learned": true,
     "id": "wmw48cq4blp1"
@@ -861,7 +1009,7 @@
     "from": "en",
     "src": "balancing",
     "english": "balancing",
-    "portuguese": "balanceamento",
+    "portuguese": "equilibrando, conciliando (contas)",
     "example": "I am balancing the accounts today.",
     "note": "'Balancing' comes from the verb 'to balance', which means making sure debits and credits match.",
     "learned": true,
@@ -874,8 +1022,8 @@
     "from": "en",
     "src": "outta here",
     "english": "outta here",
-    "portuguese": "\"Fora daqui?\"",
-    "example": "",
+    "portuguese": "dar o fora daqui (informal, de \"out of here\")",
+    "example": "Let's get outta here.",
     "note": "",
     "learned": true,
     "id": "wmw4btaikikw"
@@ -887,8 +1035,8 @@
     "from": "en",
     "src": "hoes",
     "english": "hoes",
-    "portuguese": "pás",
-    "example": "I need to file the invoices.",
+    "portuguese": "enxadas (ferramenta de jardim)",
+    "example": "The farmer uses hoes in the garden.",
     "note": "Remember that regular verbs in English add -ed for past tense, e.g., filed.",
     "learned": true,
     "id": "wmw4caqxjeq4"
@@ -926,8 +1074,8 @@
     "from": "en",
     "src": "pretty",
     "english": "pretty",
-    "portuguese": "bonito",
-    "example": "The report is pretty clear.",
+    "portuguese": "bem, bastante (como em \"pretty good\"); também \"bonito\"",
+    "example": "The report is pretty good.",
     "note": "\"Pretty\" is an adjective meaning \"very\" or \"quite\"; use it before adjectives (e.g., pretty good).",
     "learned": true,
     "id": "wmw4d80lp3x5"
@@ -1101,10 +1249,10 @@
   },
   "meta": {
    "current": {
-    "detail": "Open Activities and start Day 10. It has rules, sentences to type and one speaking task you can record. Due today at 8 pm.",
+    "detail": "Open Activities and start Day 11: articles, did / does not + base verb, and past forms. Add a spoken answer. Due today at 8 pm. Day 10 is now an optional make-up.",
     "due": "Today, 8 pm",
-    "headline": "Today: Day 10 (30 min, no audio)",
-    "minimal": "Send just 3 sentences in the past, or 1 dictation. Five minutes count.",
+    "headline": "Today: Day 11 (30 min, no audio)",
+    "minimal": "Do only part A (6 articles) or record 3 sentences. Five minutes count.",
     "returnDays": [
      "2026-10-26",
      "2026-10-29",
@@ -1114,7 +1262,7 @@
     ],
     "startDate": "2026-10-26",
     "teacherNote": "For the teacher. Collection attempts: AI checks Vitor ran in the app (at, activityId, patterns, fixes, ai=true, verified=false). They are NOT verified: review them and set verified=true or correct them. Collection usage/{date}: AI uses per day (cap 30). In lookups the app now writes rev (successful reviews), nextReview (ISO date), lastReview and learned (true after 5 correct reviews). Do not overwrite these fields; use them to choose vocabulary.",
-    "updatedAt": "2026-11-05"
+    "updatedAt": "2026-11-06"
    }
   },
   "profile": {
@@ -1821,5 +1969,5 @@
    }
   }
  },
- "rev": 170
+ "rev": 171
 }
