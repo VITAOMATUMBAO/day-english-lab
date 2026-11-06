@@ -1541,6 +1541,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4ctchmwz5"
+   },
+   "wmw4ctchplav": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "And the more I travel to beaches and I go to bars at night, it's goodbye weekend.",
+    "right": "I also travel to the beach and go to bars at night, then the weekend ends.",
+    "why": "sentence is unclear and ungrammatical",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4ctchplav"
    }
   },
   "practice": {
@@ -1644,5 +1654,5 @@
    }
   }
  },
- "rev": 141
+ "rev": 142
 }
