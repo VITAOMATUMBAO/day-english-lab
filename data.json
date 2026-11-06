@@ -877,7 +877,7 @@
     "portuguese": "\"Fora daqui?\"",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw4btaikikw"
    },
    "wmw4caqxjeq4": {
@@ -1402,5 +1402,5 @@
    }
   }
  },
- "rev": 105
+ "rev": 106
 }
