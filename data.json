@@ -1431,6 +1431,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cpj38q7z"
+   },
+   "wmw4cpj3c6ve": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "I'm poor. I'm not poor. I'm not poor",
+    "right": "I used to be poor, but now I am not",
+    "why": "repetition and contradictory statements",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cpj3c6ve"
    }
   },
   "practice": {
@@ -1506,5 +1516,5 @@
    }
   }
  },
- "rev": 122
+ "rev": 123
 }
