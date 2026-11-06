@@ -108,6 +108,11 @@ h3{font:600 1rem/1.3 var(--f-body);margin:0}
 .pw{display:flex;flex-wrap:wrap;gap:6px 10px;margin:10px 0;font-weight:650}
 .pw .no{color:#f08a7a;text-decoration:underline}
 .pw .ok{color:#3dd6b1}
+.wz-top{display:flex;justify-content:space-between;align-items:center}
+.wz-card{display:grid;gap:10px;padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.wz-q{font-weight:700;font-size:1.3rem;line-height:1.35;overflow-wrap:anywhere}
+.wz-in{width:100%;box-sizing:border-box;font-size:1.15rem;line-height:1.4;min-height:96px;padding:14px;border-radius:12px}
+.wz-nav{margin-top:14px;display:flex;gap:12px}.wz-nav .btn{flex:1;padding:15px}
 .tiles3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
 .mcard{padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:8px}
 .mcard.mfx{opacity:.75}
@@ -224,7 +229,7 @@ a{color:var(--accent)}
         <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
         <div>
           <h1>G'day <span>Lab</span></h1>
-          <p class="sub">Vitor's English route to Australia · v39</p>
+          <p class="sub">Vitor's English route to Australia · v40</p>
         </div>
       </div>
       <div class="count" id="count" aria-live="polite"></div>
@@ -473,11 +478,7 @@ a{color:var(--accent)}
   /* ---------- instant correction inside the app ---------- */
   function correctNow(id,done){
     var a=S.act.find(function(x){return x.id===id})||{}, mn=Number(($('min-'+id)||{}).value)||0, txt=collectAnswers(id), ins=[];
-    document.querySelectorAll('[id^="ex-'+id+'-"]').forEach(function(el){
-      var m=el.id.match(/^ex-.+-(\d+)-(\d+)$/), v=(el.value||'').trim(); if(!m||!v) return;
-      var bl=(a.blocks||[])[Number(m[1])]||{}, it=(bl.items||[])[Number(m[2])], o=(typeof it==='string')?{p:it}:(it||{});
-      ins.push({dict:bl.t==='dictation',q:el.dataset.q||'',task:String(bl.task||bl.title||''),hint:o.hint||'',ref:bl.t==='dictation'?String(it):'',yours:v});
-    });
+    draftItems(id).forEach(function(x){ ins.push({dict:x.t==='dictation',q:x.q,task:x.task,hint:x.hint,ref:x.ref,yours:x.yours}) });
     function plain(msg){
       return saveActivity(id,{status:'marked',doneAt:new Date().toISOString(),minutes:(Number(a.minutes)||0)+mn,userNote:txt.replace(/\n/g,' | ').slice(0,200)},txt,'answer').then(function(ok){ if(ok!==false) toast(msg,7000); done(); });
     }
@@ -735,7 +736,7 @@ a{color:var(--accent)}
     wavFromBlob(blob).then(function(b64){ return {mime:'audio/wav',data:b64} }, function(){ return rawB64() })
     .then(function(au){ return ai.json(prompt,au) }).then(function(r){
       var tx=String((r&&r.transcript)||'').trim();
-      speakTx[k]=tx; speakFb[k]={fixes:((r&&r.fixes)||[]).slice(0,4).map(function(x){return {wrong:String(x.wrong||''),right:String(x.right||''),why:String(x.why||'')}}),clear:String((r&&r.clear)||''),tip:String((r&&r.tip)||'')};
+      speakTx[k]=tx; (function(){ var mm=k.match(/^([^-]+)-/); if(mm&&tx){ draftOf(mm[1])['ex-'+k+'-0']=tx; saveDR() } })(); speakFb[k]={fixes:((r&&r.fixes)||[]).slice(0,4).map(function(x){return {wrong:String(x.wrong||''),right:String(x.right||''),why:String(x.why||'')}}),clear:String((r&&r.clear)||''),tip:String((r&&r.tip)||'')};
       speakSt[k]=tx?'Done. Check the text below, then send your reply.':'I could not hear speech. Try again closer to the microphone.';
       bumpAI(); render();
     }).catch(function(e){ var m=(e&&e.code)?aiErr(e):'Could not process the audio ['+errName(e)+']. Try again.'; setSt(k,m); toast(m,8000) });
@@ -772,10 +773,11 @@ a{color:var(--accent)}
   }
 
   /* ---------- lesson blocks (exercise content lives inside the activity) ---------- */
-  function blocksHtml(a){
+  function blocksHtml(a,only){
     var id=a.id, bl=a.blocks; if(!bl||!bl.length) return '';
     var h='<div class="lesson">';
     bl.forEach(function(b,bi){
+      if(only!=null && bi!==only) return;
       var k=id+'-'+bi;
       if(b.t==='text'){ h+='<div class="lblock"><h4>'+esc(b.title||'')+'</h4><p>'+esc(b.text||'').replace(/\n/g,'<br>')+'</p></div>'; }
       else if(b.t==='audio'){
@@ -816,8 +818,54 @@ a{color:var(--accent)}
     });
     return h+'</div>';
   }
+  var DR=(function(){ try{ return JSON.parse(localStorage.getItem('gday-draft')||'{}') }catch(e){ return {} } })();
+  function saveDR(){ try{ localStorage.setItem('gday-draft',JSON.stringify(DR)) }catch(e){} }
+  function draftOf(id){ return DR[id]||(DR[id]={}) }
+  function qOf(a,inputId){
+    var m=inputId.match(/^ex-.+-(\d+)-(\d+)$/); if(!m) return {q:'',t:'',task:'',hint:'',ref:''};
+    var bl=(a.blocks||[])[Number(m[1])]||{}, it=(bl.items||[])[Number(m[2])], o=(typeof it==='string')?{p:it}:(it||{});
+    var q=bl.t==='dictation'?'Dictation '+(Number(m[2])+1):bl.t==='speak'?(bl.title||'Speaking')+' (what I said)':bl.t==='write'?(bl.title||'Writing'):(o.p||'');
+    return {q:q,t:bl.t,task:String(bl.task||bl.title||''),hint:o.hint||'',ref:bl.t==='dictation'?String(it):''};
+  }
+  function draftItems(id){
+    var a=S.act.find(function(x){return x.id===id})||{}, d=draftOf(id), out=[];
+    Object.keys(d).filter(function(k){return /^ex-/.test(k)&&String(d[k]).trim()}).sort(function(x,y){ var p=x.match(/-(\d+)-(\d+)$/),q=y.match(/-(\d+)-(\d+)$/); return p&&q?(p[1]-q[1])||(p[2]-q[2]):0 }).forEach(function(k){ var o=qOf(a,k); o.id=k; o.yours=String(d[k]).trim(); out.push(o) });
+    return out;
+  }
+  function restoreDrafts(){ document.querySelectorAll('[id^="ex-"]').forEach(function(el){ var m=el.id.match(/^ex-([^-]+)-/); if(!m) return; var v=(DR[m[1]]||{})[el.id]; if(v&&!el.value) el.value=v }) }
+  var WZ={};
+  function wizHtml(a){
+    var id=a.id, bl=a.blocks||[], steps=[];
+    bl.forEach(function(b,bi){
+      if(b.t==='sentences'||b.t==='questions') (b.items||[]).forEach(function(it,i){ steps.push({k:'item',bi:bi,i:i}) });
+      else if(b.t==='dictation') (b.items||[]).forEach(function(it,i){ steps.push({k:'dict',bi:bi,i:i}) });
+      else steps.push({k:'block',bi:bi});
+    });
+    var d=draftOf(id), cur=WZ[id]; if(cur==null) cur=Number(d._i)||0; cur=Math.max(0,Math.min(steps.length,cur)); WZ[id]=cur;
+    var answered=draftItems(id).length, total=steps.filter(function(x){return x.k!=='block'||/write|speak/.test(bl[x.bi].t)}).length;
+    var h='<div class="wz"><div class="wz-top"><span class="mono small">'+(cur<steps.length?'Step '+(cur+1)+' of '+steps.length:'Finish')+'</span><span class="small muted">'+answered+' answered</span></div><div class="rail" style="margin:6px 0 14px"><div class="fill" style="left:0;width:'+Math.round(100*cur/Math.max(1,steps.length))+'%"></div></div>';
+    if(cur<steps.length){
+      var st=steps[cur], b=bl[st.bi], k=id+'-'+st.bi;
+      if(st.k==='block') h+=blocksHtml(a,st.bi);
+      else {
+        var it=b.items[st.i], o=(typeof it==='string')?{p:it}:it, inId='ex-'+k+'-'+st.i;
+        h+='<div class="wz-card"><div class="small muted">'+esc(b.title||'')+'</div>'+(b.task?'<div class="small muted" style="margin-bottom:6px">'+esc(b.task)+'</div>':'');
+        if(st.k==='dict') h+='<div class="wz-q">Listen and type what you hear</div><div class="row" style="margin:8px 0"><button class="btn sun" data-act="speak" data-text="'+esc(it)+'" data-rate="0.8">&#9654; Play</button><button class="btn ghost" data-act="speak" data-text="'+esc(it)+'" data-rate="0.6">Slow</button></div>';
+        else h+='<div class="wz-q">'+esc(o.p)+'</div>'+(o.hint?'<div class="small muted">Hint: '+esc(o.hint)+'</div>':'');
+        h+='<textarea id="'+inId+'" rows="3" class="wz-in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="'+(st.k==='dict'?'Type what you hear':'Write your answer here')+'" data-q="'+esc(st.k==='dict'?'Dictation '+(st.i+1):o.p)+'"></textarea></div>';
+      }
+      h+='<div class="row wz-nav"><button class="btn ghost" data-act="wz-back" data-id="'+id+'"'+(cur===0?' disabled':'')+'>&larr; Back</button><button class="btn sun" data-act="wz-next" data-id="'+id+'">'+(cur===steps.length-1?'Finish':'Next &rarr;')+'</button></div>';
+    } else {
+      h+='<div class="wz-card"><div class="wz-q">All steps done</div><p class="small">You answered <b>'+answered+'</b> items. Your answers are saved on this phone. Tap Send to get your correction now.</p>'+
+        '<div><label for="ret-'+id+'">Anything else for your teacher (optional)</label><textarea id="ret-'+id+'" rows="2"></textarea></div>'+
+        '<div class="row"><label for="min-'+id+'" style="margin:0">Minutes studied (optional)</label><input type="number" id="min-'+id+'" min="0" max="240" inputmode="numeric"></div>'+
+        '<button class="btn sun" data-act="send" data-id="'+id+'" style="width:100%;padding:16px;margin-top:10px">Send and correct now</button>'+
+        '<div class="row" style="margin-top:10px"><button class="btn ghost" data-act="wz-back" data-id="'+id+'">&larr; Back to check</button><button class="btn ghost" data-act="skip" data-id="'+id+'">I could not do it</button></div></div>';
+    }
+    return h+'</div>';
+  }
   function collectAnswers(id){
-    var out=[]; document.querySelectorAll('[id^="ex-'+id+'-"]').forEach(function(el){ var v=(el.value||'').trim(); if(v) out.push((el.dataset.q?el.dataset.q+': ':'')+v) });
+    var out=[]; draftItems(id).forEach(function(x){ out.push((x.q?x.q+': ':'')+x.yours) });
     var free=(($('ret-'+id)||{}).value||'').trim(); if(free) out.push(free);
     return out.join('\n');
   }
@@ -952,7 +1000,8 @@ a{color:var(--accent)}
         (left?'<p class="small"><b>Redo:</b> '+left+' to fix. Rewrite each wrong sentence above.</p>':'<p class="small"><b>All fixed. Great work!</b></p>')+
         (cr.next?'<p class="small"><b>Next:</b> '+esc(cr.next)+'</p>':'')+'</div>';
     }
-    if(isOpen(a)){
+    if(isOpen(a) && a.blocks && a.blocks.length){ h+=wizHtml(a); }
+    else if(isOpen(a)){
       h+=blocksHtml(a);
       h+='<div><label for="ret-'+id+'">'+(a.blocks&&a.blocks.length?'Anything else you want to tell your teacher (optional)':'Paste your answers here, or write what you did (dictation is fine)')+'</label><textarea id="ret-'+id+'"></textarea></div>'+
         '<div class="row"><label for="min-'+id+'" style="margin:0">Minutes studied (optional)</label><input type="number" id="min-'+id+'" min="0" max="240" inputmode="numeric">'+
@@ -1307,7 +1356,7 @@ a{color:var(--accent)}
     document.querySelectorAll('#tabs a').forEach(function(a){ if(a.dataset.tab===t) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current') });
     var el=$('s-'+t);
     el.innerHTML = t==='today'?vToday(): t==='activities'?vActivities(): t==='practice'?vPractice(): t==='translator'?vTranslator(): t==='level'?vLevel(): t==='mistakes'?vMistakes(): t==='settings'?vSettings(): vLog();
-    restoreUI(ui);
+    restoreUI(ui); restoreDrafts();
     $('count').innerHTML='<b>'+daysTo('2028-09-01')+'</b>days to Sep 2028';
     if(!db && !S.loaded.act && !$('conn').textContent) $('conn').textContent='Loading your data…';
   }
@@ -1319,6 +1368,7 @@ a{color:var(--accent)}
     if(b.dataset.wfilter){ wfilter=b.dataset.wfilter; render(); return; }
 
     var act=b.dataset.act, id=b.dataset.id;
+    if(act==='wz-next'||act==='wz-back'){ var wi=(WZ[id]||0)+(act==='wz-next'?1:-1); WZ[id]=Math.max(0,wi); draftOf(id)._i=WZ[id]; saveDR(); render(); try{ window.scrollTo(0,0) }catch(e){} return; }
     if(act==='pr-home'){ pr.mode=''; render(); return; }
     if(act==='pr-open'){ pr.mode=id; pr.fcShow=false; pr.pres=null; pr.ieres=null; render(); return; }
     if(act==='fc-show'){ pr.fcShow=true; render(); return; }
@@ -1411,7 +1461,7 @@ a{color:var(--accent)}
       if(!txt.trim()){ toast('Type at least one answer first.',4000); return; }
       b.disabled=true; var oldLbl=b.textContent; b.textContent='Correcting… (up to 30 seconds)';
       toast('Correcting your answers… wait a few seconds.',6000);
-      correctNow(id,function(){ b.disabled=false; b.textContent=oldLbl; var t=$('ret-'+id); if(t) t.value=''; render(); });
+      correctNow(id,function(){ b.disabled=false; b.textContent=oldLbl; delete DR[id]; delete WZ[id]; saveDR(); var t=$('ret-'+id); if(t) t.value=''; render(); });
       return;
     }
     if(act==='skip' && id){
@@ -1421,6 +1471,7 @@ a{color:var(--accent)}
     }
   });
   document.addEventListener('input',function(e){
+    if(e.target && /^ex-/.test(e.target.id||'')){ var mm=e.target.id.match(/^ex-([^-]+)-/); if(mm){ draftOf(mm[1])[e.target.id]=e.target.value; saveDR(); } }
     if(e.target && e.target.id==='w-q'){ wquery=e.target.value; render(); }
     if(e.target && e.target.id==='a-q'){ aquery=e.target.value; render(); }
   });
