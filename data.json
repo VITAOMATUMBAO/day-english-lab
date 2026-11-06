@@ -819,10 +819,10 @@
     "at": "2026-11-06T00:22:07.934Z",
     "lastAt": "2026-11-06T00:22:07.934Z",
     "count": 1,
-    "from": "pt",
+    "from": "en",
     "src": "Sold out",
-    "english": "esgotado, vendido",
-    "portuguese": "Sold out",
+    "english": "Sold out",
+    "portuguese": "Esgotado",
     "example": "",
     "note": "",
     "learned": true,
@@ -1294,5 +1294,5 @@
    }
   }
  },
- "rev": 80
+ "rev": 81
 }
