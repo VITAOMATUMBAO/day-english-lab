@@ -1236,6 +1236,12 @@
     "activityId": "a15",
     "text": "He does not worked here.: He does not work here\nWe did not went to the meeting.: We didn’t go to the meeting\nDid you sent the report?: did you send the report?\nShe do not know the answer.: Se doesn’t know the answer\nI did wrote the email.: I did write the email\nShe ___ (send) the report every Monday.: She sends the report every monday\nHe ___ (not / work) on Sunday.: He doesn’t works on sunday\nMy boss ___ (check) all the invoices.: My boss checks all the invoices",
     "kind": "answer"
+   },
+   "wmw5jacf1k3h": {
+    "at": "2026-11-06T22:16:11.100Z",
+    "activityId": "a19",
+    "text": "I have ___ Claude plan.: I have the Claude plan\nShe is ___ accountant.: She is an accountant\nI sent ___ invoice. ___ invoice was late.: I sent the Invoice. A invoice was late\nWe closed the month on ___ Friday.: We closede month on friday\nHe needs ___ report for ___ audit.: He needs a report for the audit\nI study ___ English every day.: I study the English every day\nShe knows the answer.: She doesn’t the answer\nWe went to the meeting.: We did not go the meeting\nHe works on Sunday.: He doesn’t works on sunday\nThey paid the bill.: They pay did not the bill\nI took the bus today.: I didn’t talk the bus today",
+    "kind": "answer"
    }
   },
   "attempts": {},
@@ -1971,5 +1977,5 @@
    }
   }
  },
- "rev": 172
+ "rev": 173
 }
