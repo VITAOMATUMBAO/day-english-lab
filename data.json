@@ -1421,6 +1421,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cpj35kpi"
+   },
+   "wmw4cpj38q7z": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "life is not good. It is... have more violence and more... ...pour...",
+    "right": "life can be difficult because there is some violence",
+    "why": "unfinished sentence and wrong verb form",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cpj38q7z"
    }
   },
   "practice": {
@@ -1496,5 +1506,5 @@
    }
   }
  },
- "rev": 121
+ "rev": 122
 }
