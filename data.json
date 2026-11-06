@@ -1451,6 +1451,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cpj3fth5"
+   },
+   "wmw4cqlykfh3": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "beautiful beats",
+    "right": "beautiful beaches",
+    "why": "wrong word choice",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cqlykfh3"
    }
   },
   "practice": {
@@ -1533,5 +1543,5 @@
    }
   }
  },
- "rev": 126
+ "rev": 127
 }
