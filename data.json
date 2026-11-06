@@ -879,6 +879,19 @@
     "note": "",
     "learned": false,
     "id": "wmw4btaikikw"
+   },
+   "wmw4caqxjeq4": {
+    "at": "2026-11-06T02:12:46.423Z",
+    "lastAt": "2026-11-06T02:12:46.423Z",
+    "count": 1,
+    "from": "en",
+    "src": "hoes",
+    "english": "hoes",
+    "portuguese": "pás",
+    "example": "I need to file the invoices.",
+    "note": "Remember that regular verbs in English add -ed for past tense, e.g., filed.",
+    "learned": false,
+    "id": "wmw4caqxjeq4"
    }
   },
   "returns": {
@@ -1389,5 +1402,5 @@
    }
   }
  },
- "rev": 102
+ "rev": 103
 }
