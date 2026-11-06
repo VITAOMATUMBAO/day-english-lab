@@ -101,6 +101,13 @@ h3{font:600 1rem/1.3 var(--f-body);margin:0}
 .detail .body p{margin:0}
 #a-q{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;box-sizing:border-box}
 
+.prac-card{display:grid;gap:6px;text-align:left;width:100%;cursor:pointer;color:inherit;font:inherit}
+.pc-t{font-weight:750;font-size:1.1rem}
+.fcard{display:grid;gap:12px}
+.fc-ans{font-weight:700;font-size:1.3rem;color:#3dd6b1}
+.pw{display:flex;flex-wrap:wrap;gap:6px 10px;margin:10px 0;font-weight:650}
+.pw .no{color:#f08a7a;text-decoration:underline}
+.pw .ok{color:#3dd6b1}
 .tiles3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
 .mcard{padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:8px}
 .mcard.mfx{opacity:.75}
@@ -217,7 +224,7 @@ a{color:var(--accent)}
         <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
         <div>
           <h1>G'day <span>Lab</span></h1>
-          <p class="sub">Vitor's English route to Australia · v30</p>
+          <p class="sub">Vitor's English route to Australia · v31</p>
         </div>
       </div>
       <div class="count" id="count" aria-live="polite"></div>
@@ -226,6 +233,7 @@ a{color:var(--accent)}
     <nav aria-label="Sections" id="tabs">
       <a href="#today" data-tab="today">Today</a>
       <a href="#activities" data-tab="activities">Activities</a>
+      <a href="#practice" data-tab="practice">Practice</a>
       <a href="#translator" data-tab="translator">Translator</a>
       <a href="#level" data-tab="level">Level</a>
       <a href="#mistakes" data-tab="mistakes">Mistakes</a>
@@ -239,6 +247,7 @@ a{color:var(--accent)}
   <div class="status-line" id="conn" role="status"></div>
   <section id="s-today" aria-label="Today"></section>
   <section id="s-activities" aria-label="Activities" hidden></section>
+  <section id="s-practice" aria-label="Practice" hidden></section>
   <section id="s-translator" aria-label="Translator" hidden></section>
   <section id="s-level" aria-label="Level" hidden></section>
   <section id="s-mistakes" aria-label="Mistakes" hidden></section>
@@ -248,10 +257,10 @@ a{color:var(--accent)}
 
 <script>
 (function(){
-  var S = {act:[],scores:[],errs:[],feed:[],words:[],attempts:[],mis:[],usage:null,meta:null,prof:null,loaded:{}};
+  var S = {act:[],scores:[],errs:[],feed:[],words:[],attempts:[],mis:[],prac:[],usage:null,meta:null,prof:null,loaded:{}};
   var db = null, filter = 'open', wfilter = 'all', wquery = '', trBusy = false, trResult = null, trError = '';
   var CAP = 30, STEPS = [1,3,7,14,30], fb = {}, fbBusy = {}, rvMsg = null, clearIds = {};
-  var TABS = ['today','activities','translator','level','mistakes','log','settings'];
+  var TABS = ['today','activities','practice','translator','level','mistakes','log','settings'];
   var ST = {
     done:['Corrected','p-done'], partial:['Partly done','p-partial'], pending:['No reply yet','p-pending'],
     planned:['Planned','p-planned'], marked:['Sent by you','p-marked'], skipped:['Skipped','p-neutral']
@@ -366,7 +375,7 @@ a{color:var(--accent)}
         S.loaded[k]=true; clearTimeout(timer); $('conn').textContent=''; render();
       },function(e){ $('conn').textContent='Could not read your data ('+(e&&e.code||'error')+').'; });
     }
-    coll('activities','act'); coll('scores','scores'); coll('errors','errs'); coll('feed','feed'); coll('lookups','words'); coll('attempts','attempts'); coll('mistakes','mis');
+    coll('activities','act'); coll('scores','scores'); coll('errors','errs'); coll('feed','feed'); coll('lookups','words'); coll('attempts','attempts'); coll('mistakes','mis'); coll('practice','prac');
     db.doc('usage/'+todayISO()).onSnapshot(function(d){S.usage=d.exists?d.data():null;render()},function(){});
     db.doc('meta/current').onSnapshot(function(d){S.meta=d.exists?d.data():null;S.loaded.meta=true;render()},function(){});
     db.doc('profile/level').onSnapshot(function(d){S.prof=d.exists?d.data():null;S.loaded.prof=true;render()},function(){});
@@ -569,7 +578,13 @@ a{color:var(--accent)}
   }
   function setSt(k,t){ speakSt[k]=t; var el=$('recst-'+k); if(el) el.textContent=t }
   function errName(e){ return ((e&&e.name)||(e&&e.code)||'error')+(e&&e.message?': '+String(e.message).slice(0,80):'') }
+  var recMode={};
+  function audioPart(blob){
+    function raw(){ return blob.arrayBuffer().then(function(buf){ var by=new Uint8Array(buf),bin='',CH=8192; for(var j=0;j<by.length;j+=CH) bin+=String.fromCharCode.apply(null,by.subarray(j,j+CH)); return {mime:(blob.type||'audio/mp4').split(';')[0],data:btoa(bin)} }) }
+    return wavFromBlob(blob).then(function(b64){ return {mime:'audio/wav',data:b64} },function(){ return raw() });
+  }
   function processAudio(k,blob){
+    if(recMode[k]) return recMode[k](k,blob);
     if(aiLeft()<=0){ setSt(k,'You used all '+CAP+' AI uses for today.'); return; }
     setSt(k,'Listening to your audio…'); toast('Audio received ('+Math.round(blob.size/1024)+' KB). Listening…',3000);
     var prompt='Vitor is a Brazilian accountant at English level A2. Listen to the audio. 1) Transcribe EXACTLY what he said, including his mistakes. Do not correct the transcript. 2) List at most 4 real grammar or word mistakes. 3) Say in one short sentence which words or sounds may be hard for a listener to understand, and say honestly that you can only estimate this. 4) One short tip. Reply with JSON only: {"transcript":"","fixes":[{"wrong":"","right":"","why":"one short reason in simple English"}],"clear":"","tip":""}. If there is no speech, use an empty transcript.';
@@ -945,6 +960,103 @@ a{color:var(--accent)}
     return h;
   }
 
+
+  /* ---------- Practice: flashcards, pronunciation, IELTS ---------- */
+  var pr={mode:'',fcSkip:{},fcShow:false,pi:0,pres:null,ieKind:'sp1',iei:0,ieres:null,iebusy:false,iewtxt:''};
+  var PRON=['I reconciled the supplier accounts this morning.','She does not know the answer.','We closed the month on Friday.','Could you send me the invoice by email?','I have worked in accounting for three years.','The meeting starts at nine o\'clock.','I am saving money to move to Australia.','What did you do last weekend?','He paid the bill yesterday.','I think the report is almost ready.','Thank you very much, have a great day.','I would like to book a table for two, please.'];
+  var IE_SP1=['What do you do? Do you work or study?','Tell me about your hometown.','What do you usually do on weekends?','Do you like cooking? Why or why not?','How do you usually get to work?','What is your favourite season and why?','Do you prefer to study alone or with other people?','Tell me about your daily routine.'];
+  var IE_SP2=['Describe a person who helped you. Say: who the person is, how you know them, how they helped you, and why it was important to you.','Describe a place you want to visit. Say: where it is, how you know about it, what you want to do there, and why you want to go.'];
+  var IE_WR=['Some people think English is essential for a good career. Do you agree or disagree? Write at least 100 words. (The real test asks for 250.)','Many people move to another country to work. What are the good and bad points? Write at least 100 words.'];
+  function pracList(){ return PRON.concat(S.words.filter(function(w){return w.example}).slice(-6).map(function(w){return w.example})) }
+  function bandTxt(n){ n=Number(n); return isFinite(n)?n.toFixed(1):'-' }
+  function savePractice(o){ if(db) db.collection('practice').add(Object.assign({at:new Date().toISOString()},o)).catch(function(){}) }
+  function addMis(fixes,pat){
+    if(!db) return; (fixes||[]).forEach(function(x){ if(!x.wrong||!x.right||normAns(x.wrong)===normAns(x.right)) return;
+      if(allMistakes().some(function(m){return normAns(m.wrong)===normAns(x.wrong)&&normAns(m.right)===normAns(x.right)})) return;
+      db.collection('mistakes').add({date:todayISO(),pattern:pat,wrong:x.wrong,right:x.right,why:x.why||'',fixed:false,tries:0}).catch(function(){}) }) }
+  function recBox(k,label){
+    var rs=recState&&recState.k===k;
+    return '<div class="row"><button class="btn sun" data-act="rec" data-k="'+k+'" id="recbtn-'+k+'">'+(rs?'&#9632; Stop':'&#9679; Record')+'</button><span class="small muted" id="recst-'+k+'">'+esc(speakSt[k]||label||'Tap Record, speak, then tap Stop.')+'</span></div>'+
+      '<div class="small" style="margin-top:8px"><label class="btn ghost" style="display:inline-block;cursor:pointer">Use the phone recorder<input type="file" accept="audio/*" capture data-recfile="'+k+'" style="display:none"></label></div>';
+  }
+  recMode.pron=function(k,blob){
+    if(aiLeft()<=0){ setSt(k,'You used all '+CAP+' AI uses for today.'); return; }
+    var target=pracList()[pr.pi%pracList().length];
+    setSt(k,'Listening to your voice…');
+    var prompt='Vitor is a Brazilian accountant at English level A2. He read this target sentence aloud: "'+target+'". Listen and compare what he said with the target. Reply with JSON only: {"heard":"what you heard him say","score":0-100 integer for how close and clear it was,"words":[{"w":"each target word in order","ok":true or false,"tip":"only if not ok: one short tip for a Portuguese speaker"}],"tip":"one short tip in simple English"}. Be honest: you only estimate from audio. If there is no speech, score 0.';
+    audioPart(blob).then(function(au){ return ai.json(prompt,au) }).then(function(r){
+      pr.pres={target:target,heard:String((r&&r.heard)||''),score:Math.max(0,Math.min(100,Number(r&&r.score)||0)),words:((r&&r.words)||[]).map(function(x){return {w:String(x.w||''),ok:x.ok!==false,tip:String(x.tip||'')}}),tip:String((r&&r.tip)||'')};
+      speakSt[k]=''; bumpAI(); savePractice({kind:'pron',target:target,score:pr.pres.score}); render();
+    }).catch(function(e){ var m=(e&&e.code)?aiErr(e):'Could not process the audio ['+errName(e)+'].'; setSt(k,m); toast(m,8000) });
+  };
+  function ieHandle(r,kind,extra){
+    var b=(r&&r.bands)||{}; pr.ieres=Object.assign({kind:kind,bands:b,overall:Number(r&&r.overall)||0,fixes:((r&&r.fixes)||[]).slice(0,4).map(function(x){return {wrong:String(x.wrong||''),right:String(x.right||''),why:String(x.why||'')}}),model:String((r&&r.model)||''),tip:String((r&&r.tip)||'')},extra||{});
+    pr.iebusy=false; bumpAI(); savePractice({kind:'ielts-'+kind,overall:pr.ieres.overall}); addMis(pr.ieres.fixes,kind==='write'?'Writing':'Speaking'); render();
+  }
+  recMode.ie=function(k,blob){
+    if(aiLeft()<=0){ setSt(k,'You used all '+CAP+' AI uses for today.'); return; }
+    var q=(pr.ieKind==='sp2'?IE_SP2:IE_SP1)[pr.iei%(pr.ieKind==='sp2'?IE_SP2:IE_SP1).length];
+    setSt(k,'Listening to your answer…'); pr.iebusy=true;
+    var prompt='You are an IELTS speaking examiner helping Vitor, a Brazilian accountant at English level A2 (his goal is band 7.0). Question: "'+q+'". Listen to his answer. Reply with JSON only: {"transcript":"exactly what he said, mistakes included","bands":{"fluency":number,"vocabulary":number,"grammar":number,"pronunciation":number},"overall":number,"fixes":[{"wrong":"","right":"","why":"one short reason in simple English"}],"model":"a better answer of 2-3 simple sentences at B1 level using his ideas","tip":"one short tip"}. Band scores use 0.5 steps. Be honest and not generous: an A2 speaker is usually band 3 to 4.5. Say these are estimates. At most 4 fixes.';
+    audioPart(blob).then(function(au){ return ai.json(prompt,au) }).then(function(r){ speakSt[k]=''; ieHandle(r,pr.ieKind,{transcript:String((r&&r.transcript)||''),q:q}) })
+    .catch(function(e){ pr.iebusy=false; var m=(e&&e.code)?aiErr(e):'Could not process the audio ['+errName(e)+'].'; setSt(k,m); toast(m,8000) });
+  };
+  function ieWrite(){
+    var txt=(($('ie-w')||{}).value||'').trim(), q=IE_WR[pr.iei%IE_WR.length];
+    if(txt.split(/\s+/).length<20){ toast('Write at least 20 words first.',3500); return; }
+    if(aiLeft()<=0){ toast('You used all '+CAP+' AI uses for today.',4000); return; }
+    pr.iebusy=true; pr.iewtxt=txt; render();
+    var prompt='You are an IELTS writing examiner helping Vitor, a Brazilian accountant at English level A2 (goal band 7.0). Task: "'+q+'". His text: '+JSON.stringify(txt)+'. Reply with JSON only: {"bands":{"task":number,"coherence":number,"vocabulary":number,"grammar":number},"overall":number,"fixes":[{"wrong":"exact words from his text","right":"corrected","why":"one short reason in simple English"}],"model":"a corrected and improved version of his first 2 sentences","tip":"one short tip"}. Band scores use 0.5 steps. Be honest, not generous. At most 5 fixes.';
+    ai.json(prompt).then(function(r){ ieHandle(r,'write',{q:q}) }).catch(function(e){ pr.iebusy=false; toast(aiErr(e),8000); render() });
+  }
+  function vPractice(){
+    var td=todayISO(), today=S.prac.filter(function(p){return String(p.at).slice(0,10)===td}).length;
+    var back='<button class="btn ghost" data-act="pr-home" style="margin-bottom:12px">&larr; Practice</button>';
+    if(!pr.mode){
+      var due=dueWords().length, ps=S.prac.filter(function(p){return p.kind==='pron'}).slice(-10), avg=ps.length?Math.round(ps.reduce(function(s,p){return s+(p.score||0)},0)/ps.length):null;
+      var ie=S.prac.filter(function(p){return /^ielts/.test(p.kind)&&p.overall}).slice(-5), iav=ie.length?(ie.reduce(function(s,p){return s+p.overall},0)/ie.length):null;
+      function card(m,t,d,st){ return '<button class="panel prac-card" data-act="pr-open" data-id="'+m+'"><span class="pc-t">'+t+'</span><span class="small muted">'+d+'</span><span class="mono small">'+st+'</span></button>' }
+      return '<h2>Practice</h2><p class="small muted" style="margin:4px 0 14px">Short sessions you can do any time. '+today+' done today.</p><div class="list">'+
+        card('fc','Flashcards','Your saved words, spaced repetition like Anki. No AI used.',due+' due now')+
+        card('pron','Pronunciation','Read a sentence aloud. You get a score and the words to fix.',avg===null?'not tried yet':'average '+avg+'/100')+
+        card('ie','IELTS practice','Speaking and writing with an estimated band for each part.',iav===null?'not tried yet':'recent average band '+bandTxt(iav))+'</div>';
+    }
+    if(pr.mode==='fc'){
+      var dw=dueWords().filter(function(w){return !pr.fcSkip[w.id]});
+      if(!dw.length) return back+'<div class="panel"><h3>All done</h3><p class="small muted">No more cards due now. New words you save in the Translator come back tomorrow, then after 3, 7, 14 and 30 days.</p></div>';
+      var w=dw[0];
+      return back+'<div class="sect">Flashcards &middot; '+dw.length+' left</div><div class="panel fcard"><div class="small muted">Say it in English</div><div class="big-q">'+esc(w.portuguese)+'</div>'+
+        (pr.fcShow?'<div class="fc-ans">'+esc(w.english)+'</div>'+(w.example?'<div class="small muted">'+esc(w.example)+'</div>':'')+'<div class="row"><button class="btn ghost" data-act="speak" data-text="'+esc(w.english)+'" data-rate="0.8">&#9654; Listen</button></div><div class="row" style="margin-top:12px"><button class="btn ghost" data-act="fc-grade" data-g="0" data-id="'+esc(w.id)+'">Again</button><button class="btn sun" data-act="fc-grade" data-g="1" data-id="'+esc(w.id)+'">Good</button><button class="btn ghost" data-act="fc-grade" data-g="2" data-id="'+esc(w.id)+'">Easy</button></div>':'<button class="btn sun" data-act="fc-show" style="width:100%;margin-top:14px;padding:14px">Show answer</button>')+'</div>';
+    }
+    if(pr.mode==='pron'){
+      var L=pracList(), t=L[pr.pi%L.length], r=pr.pres;
+      var h=back+'<div class="sect">Pronunciation</div><div class="panel"><div class="small muted">Read this sentence aloud</div><div class="big-q" style="font-size:1.25rem">'+esc(t)+'</div><div class="row"><button class="btn ghost" data-act="speak" data-text="'+esc(t)+'" data-rate="0.9">&#9654; Listen first</button><button class="btn ghost" data-act="speak" data-text="'+esc(t)+'" data-rate="0.65">Slow</button></div><div style="margin-top:14px">'+recBox('pron')+'</div></div>';
+      if(r&&r.target===t){
+        h+='<div class="panel" style="margin-top:12px"><div class="row" style="justify-content:space-between"><b>Score</b><span class="bigline"><b>'+r.score+'</b>/100</span></div><div class="pw">'+r.words.map(function(x){return '<span class="'+(x.ok?'ok':'no')+'">'+esc(x.w)+'</span>'}).join(' ')+'</div>'+
+          r.words.filter(function(x){return !x.ok&&x.tip}).map(function(x){return '<div class="small"><b>'+esc(x.w)+':</b> '+esc(x.tip)+'</div>'}).join('')+(r.heard?'<div class="small muted" style="margin-top:8px">I heard: '+esc(r.heard)+'</div>':'')+(r.tip?'<div class="note" style="margin-top:8px">'+esc(r.tip)+'</div>':'')+'<div class="small muted" style="margin-top:8px">This is an estimate from the audio, not an official test.</div></div>';
+      }
+      return h+'<button class="btn ghost" data-act="pr-next" style="width:100%;margin-top:12px">Next sentence</button>';
+    }
+    // ielts
+    var kinds=[['sp1','Speaking 1'],['sp2','Speaking 2'],['write','Writing']];
+    var qs=pr.ieKind==='sp1'?IE_SP1:pr.ieKind==='sp2'?IE_SP2:IE_WR, q=qs[pr.iei%qs.length];
+    var h2=back+'<div class="sect">IELTS practice</div><div class="chips">'+kinds.map(function(k){return '<button class="chip" data-act="ie-kind" data-id="'+k[0]+'" aria-pressed="'+(pr.ieKind===k[0])+'">'+k[1]+'</button>'}).join('')+'</div>'+
+      '<div class="panel" style="margin-top:12px"><div class="small muted">'+(pr.ieKind==='write'?'Writing task':'Question')+'</div><div class="big-q" style="font-size:1.15rem">'+esc(q)+'</div>'+
+      (pr.ieKind==='write'?'<textarea id="ie-w" rows="8" style="width:100%;box-sizing:border-box;margin-top:10px" placeholder="Write your answer here">'+esc(pr.iewtxt)+'</textarea><button class="btn sun" data-act="ie-send" style="margin-top:10px"'+(pr.iebusy?' disabled':'')+'>'+(pr.iebusy?'Checking…':'Check my writing')+'</button>':
+       '<div class="row" style="margin-bottom:8px"><button class="btn ghost" data-act="speak" data-text="'+esc(q)+'" data-rate="0.9">&#9654; Hear the question</button></div>'+recBox('ie',pr.ieKind==='sp2'?'Speak for 1 to 2 minutes.':'Answer in 3 to 6 sentences.'))+
+      '<button class="btn ghost" data-act="ie-next" style="margin-top:10px">Another question</button></div>';
+    var r2=pr.ieres;
+    if(r2&&r2.kind===pr.ieKind&&r2.q===q){
+      var bl=r2.kind==='write'?[['Task','task'],['Coherence','coherence'],['Vocabulary','vocabulary'],['Grammar','grammar']]:[['Fluency','fluency'],['Vocabulary','vocabulary'],['Grammar','grammar'],['Pronunciation','pronunciation']];
+      h2+='<div class="panel" style="margin-top:12px"><div class="row" style="justify-content:space-between"><b>Estimated band</b><span class="bigline"><b>'+bandTxt(r2.overall)+'</b></span></div><div class="tiles3" style="grid-template-columns:repeat(4,1fr)">'+bl.map(function(x){return '<div class="stat"><div class="n" style="font-size:1.2rem">'+bandTxt(r2.bands[x[1]])+'</div><div class="l">'+x[0]+'</div></div>'}).join('')+'</div>'+
+        (r2.transcript?'<div class="small muted" style="margin-top:10px">You said: '+esc(r2.transcript)+'</div>':'')+
+        r2.fixes.map(function(x){return '<div class="ex" style="margin-top:8px"><span class="no">'+esc(x.wrong)+'</span> &rarr; <span class="ok">'+esc(x.right)+'</span><div class="small muted">'+esc(x.why)+'</div></div>'}).join('')+
+        (r2.model?'<div class="note" style="margin-top:10px"><b>Better version:</b> '+esc(r2.model)+'</div>':'')+(r2.tip?'<div class="small" style="margin-top:8px">'+esc(r2.tip)+'</div>':'')+
+        '<div class="small muted" style="margin-top:8px">Estimate only. Your mistakes were added to the Mistakes tab.</div></div>';
+    }
+    return h2;
+  }
+
   /* ---------- mistake bank ---------- */
   var mfilter='fix', mpat='', mshow=10, pm=null;
   function patternOf(x){ if(x.pattern) return x.pattern; var t=(x.q||'')+' '+(x.right||''); return /\b(does|did|doesn't|didn't)\b/i.test(t)?'Verb after did / does not':'Other' }
@@ -1031,7 +1143,7 @@ a{color:var(--accent)}
     TABS.forEach(function(k){ $('s-'+k).hidden = (k!==t) });
     document.querySelectorAll('#tabs a').forEach(function(a){ if(a.dataset.tab===t) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current') });
     var el=$('s-'+t);
-    el.innerHTML = t==='today'?vToday(): t==='activities'?vActivities(): t==='translator'?vTranslator(): t==='level'?vLevel(): t==='mistakes'?vMistakes(): t==='settings'?vSettings(): vLog();
+    el.innerHTML = t==='today'?vToday(): t==='activities'?vActivities(): t==='practice'?vPractice(): t==='translator'?vTranslator(): t==='level'?vLevel(): t==='mistakes'?vMistakes(): t==='settings'?vSettings(): vLog();
     restoreUI(ui);
     $('count').innerHTML='<b>'+daysTo('2028-09-01')+'</b>days to Sep 2028';
     if(!db && !S.loaded.act && !$('conn').textContent) $('conn').textContent='Loading your data…';
@@ -1042,6 +1154,22 @@ a{color:var(--accent)}
     if(b.dataset.filter){ filter=b.dataset.filter; render(); return; }
     if(b.dataset.act==='showall'){ showAll[b.dataset.key]=1; render(); return; }
     if(b.dataset.wfilter){ wfilter=b.dataset.wfilter; render(); return; }
+
+    var act=b.dataset.act, id=b.dataset.id;
+    if(act==='pr-home'){ pr.mode=''; render(); return; }
+    if(act==='pr-open'){ pr.mode=id; pr.fcShow=false; pr.pres=null; pr.ieres=null; render(); return; }
+    if(act==='fc-show'){ pr.fcShow=true; render(); return; }
+    if(act==='fc-grade'){
+      var fw=S.words.find(function(x){return x.id===id}); if(!fw||!db) return; var g=Number(b.dataset.g), td2=todayISO();
+      var rv=g===0?0:(Number(fw.rev)||0)+(g===2?2:1);
+      if(g===0) pr.fcSkip[id]=1;
+      db.doc('lookups/'+id).update({rev:rv,lastReview:td2,nextReview:g===0?td2:addDays(td2,STEPS[Math.min(rv,4)]),learned:g>0&&rv>=5}).catch(failSave);
+      pr.fcShow=false; render(); return;
+    }
+    if(act==='pr-next'){ pr.pi++; pr.pres=null; render(); return; }
+    if(act==='ie-kind'){ pr.ieKind=id; pr.iei=0; pr.ieres=null; render(); return; }
+    if(act==='ie-next'){ pr.iei++; pr.ieres=null; pr.iewtxt=''; render(); return; }
+    if(act==='ie-send'){ ieWrite(); return; }
     if(b.dataset.mf){ mfilter=b.dataset.mf; mshow=10; render(); return; }
     if(b.dataset.mp!==undefined && b.hasAttribute('data-mp')){ mpat=b.dataset.mp; mshow=10; render(); return; }
     if(act==='mmore'){ mshow+=15; render(); return; }
@@ -1068,8 +1196,6 @@ a{color:var(--accent)}
       if(pg) pm.tries=0;
       return;
     }
-
-    var act=b.dataset.act, id=b.dataset.id;
     if(act==='cfg-save'){
       CFG.repo=($('cfg-repo').value||'').trim()||DEF_REPO; var nt=($('cfg-token').value||'').replace(/\s+/g,''), ng=($('cfg-gemini').value||'').replace(/\s+/g,''); if(nt) CFG.token=nt; if(ng) CFG.gemini=ng; CFG.model=($('cfg-model').value||'').trim()||DEF_MODEL;
       saveCfg(); cfgMsg='Saved on this device.'; loadData().then(function(){ cfgMsg='Saved. Data loaded.'; render() }).catch(function(){ cfgMsg='Saved, but the data could not be loaded. Check the repository name.'; render() }); render(); return;
@@ -1144,7 +1270,7 @@ a{color:var(--accent)}
   render();
   $('conn').textContent='Loading your data…';
   document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('#reload'); if(!b) return; b.textContent='Updating…'; try{ if('caches' in window) caches.keys().then(function(ks){ ks.filter(function(k){return k!=='gday-voice'}).forEach(function(k){caches.delete(k)}) }) }catch(x){} setTimeout(function(){ location.replace(location.pathname+'?r='+Date.now()) },250) });
-  function sync(){ loadData().then(function(){ $('conn').textContent=''; S.loaded={act:1,scores:1,errs:1,mis:1,feed:1,words:1,attempts:1,meta:1,prof:1} }).catch(function(){ if(!store.data) $('conn').textContent='Could not load your data. Check Settings or your connection.' }); }
+  function sync(){ loadData().then(function(){ $('conn').textContent=''; S.loaded={act:1,scores:1,errs:1,mis:1,prac:1,feed:1,words:1,attempts:1,meta:1,prof:1} }).catch(function(){ if(!store.data) $('conn').textContent='Could not load your data. Check Settings or your connection.' }); }
   listen();
   sync();
   setInterval(function(){ if(!document.hidden && !store.chain.pending) sync() },60000);
