@@ -1531,6 +1531,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4csd91enn"
+   },
+   "wmw4ctchmwz5": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "play a domino",
+    "right": "play dominoes",
+    "why": "plural noun needed",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4ctchmwz5"
    }
   },
   "practice": {
@@ -1634,5 +1644,5 @@
    }
   }
  },
- "rev": 140
+ "rev": 141
 }
