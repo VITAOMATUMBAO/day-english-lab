@@ -224,7 +224,7 @@ a{color:var(--accent)}
         <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
         <div>
           <h1>G'day <span>Lab</span></h1>
-          <p class="sub">Vitor's English route to Australia · v31</p>
+          <p class="sub">Vitor's English route to Australia · v32</p>
         </div>
       </div>
       <div class="count" id="count" aria-live="polite"></div>
@@ -336,24 +336,34 @@ a{color:var(--accent)}
   function fetchT(url,opts,ms){ var c=new AbortController(), t=setTimeout(function(){c.abort()},ms||15000); opts=Object.assign({},opts,{signal:c.signal}); return fetch(url,opts).then(function(r){clearTimeout(t);return r},function(e){clearTimeout(t); if(e&&e.name==='AbortError') throw {code:'timeout',detail:'no answer in '+((ms||15000)/1000)+'s'}; throw {code:'ai-network',detail:String(e&&e.message||e)}}) }
   var ai = { json:function(prompt,audio){
     if(!CFG.gemini) return Promise.reject({code:'no-key'});
-    var models=[(CFG.model&&CFG.model!==DEF_MODEL)?CFG.model:'gemini-2.5-flash-lite','gemini-2.5-flash','gemini-flash-latest','gemini-2.0-flash'].filter(function(m,i,a){return m&&a.indexOf(m)===i});
-    var body=JSON.stringify({contents:[{role:'user',parts:[{text:prompt}].concat(audio?[{inline_data:{mime_type:audio.mime,data:audio.data}}]:[])}],generationConfig:{responseMimeType:'application/json',temperature:.2,maxOutputTokens:900}});
+    var pref=''; try{ pref=localStorage.getItem('gday-model')||'' }catch(e){}
+    var models=[(CFG.model&&CFG.model!==DEF_MODEL)?CFG.model:pref,'gemini-flash-latest','gemini-2.5-flash','gemini-2.5-flash-lite'].filter(function(m,i,a){return m&&a.indexOf(m)===i});
+    var body=JSON.stringify({contents:[{role:'user',parts:[{text:prompt}].concat(audio?[{inline_data:{mime_type:audio.mime,data:audio.data}}]:[])}],generationConfig:{responseMimeType:'application/json',temperature:.2,maxOutputTokens:2048}});
+    var tried={}, discovered=false, lastErr=null;
+    function ver(n){ var m=n.match(/gemini-(\d+)(?:\.(\d+))?/); return m?Number(m[1])+Number(m[2]||0)/100:0 }
     function discover(){
-      return fetchT('https://generativelanguage.googleapis.com/v1beta/models?pageSize=100',{headers:{'x-goog-api-key':CFG.gemini}},12000).then(function(r){ return r.ok?r.json():null }).then(function(j){
-        if(!j||!j.models) return null;
-        var ok=j.models.filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1}).map(function(m){return m.name.replace(/^models\//,'')});
-        var pick=ok.filter(function(n){return /flash/.test(n)&&!/image|tts|live|preview|exp|thinking/.test(n)})[0]||ok.filter(function(n){return /flash/.test(n)})[0]||ok[0];
-        return pick||null }).catch(function(){return null});
+      return fetchT('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200',{headers:{'x-goog-api-key':CFG.gemini}},12000).then(function(r){ return r.ok?r.json():null }).then(function(j){
+        if(!j||!j.models) return [];
+        var ok=j.models.filter(function(m){return (m.supportedGenerationMethods||[]).indexOf('generateContent')>-1}).map(function(m){return m.name.replace(/^models\//,'')}).filter(function(n){return /flash/.test(n)&&!/image|tts|live|audio|exp|thinking|robotics|computer|8b/.test(n)});
+        ok.sort(function(x,y){ var lx=/lite/.test(x)?1:0, ly=/lite/.test(y)?1:0, px=/preview/.test(x)?1:0, py=/preview/.test(y)?1:0; return (px-py)||(lx-ly)||(ver(y)-ver(x)) });
+        return ok }).catch(function(){return []});
     }
     function tryModel(i){
-      return fetchT('https://generativelanguage.googleapis.com/v1beta/models/'+models[i]+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},15000).then(function(r){
-        if((r.status===404||r.status===500||r.status===503||r.status===529) && i<models.length-1) return tryModel(i+1);
+      var m=models[i]; tried[m]=1;
+      return fetchT('https://generativelanguage.googleapis.com/v1beta/models/'+m+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':CFG.gemini},body:body},20000).then(function(r){
         if(r.status===429) throw {code:'rate_limited'};
         if(r.status===400||r.status===401||r.status===403){ return r.text().then(function(t){ throw {code:'bad-key',detail:r.status+' '+t.slice(0,160)} }) }
-        if(r.status===404){ return discover().then(function(m){ if(!m||models.indexOf(m)>-1) return r.text().then(function(t){ throw {code:'ai-404',detail:t.slice(0,200)} }); models.push(m); return tryModel(models.length-1) }) }
+        if(r.status===404||r.status===500||r.status===503||r.status===529){ return r.text().then(function(t){ lastErr={code:'ai-'+r.status,detail:t.slice(0,160)}; return next(i) }) }
         if(!r.ok) throw {code:'ai-'+r.status};
+        try{ localStorage.setItem('gday-model',m) }catch(e){}
         return r.json();
-      },function(e){ if(e&&(e.code==='timeout'||e.code==='ai-network')&&i<models.length-1) return tryModel(i+1); throw e });
+      },function(e){ if(e&&(e.code==='timeout'||e.code==='ai-network')){ lastErr=e; return next(i) } throw e });
+    }
+    function next(i){
+      if(i<models.length-1) return tryModel(i+1);
+      if(discovered) throw lastErr||{code:'ai-404'};
+      discovered=true;
+      return discover().then(function(list){ list.filter(function(n){return !tried[n]}).slice(0,4).forEach(function(n){ models.push(n) }); if(i<models.length-1) return tryModel(i+1); throw lastErr||{code:'ai-404'} });
     }
     return tryModel(0).then(function(j){
       var t=((((j.candidates||[])[0]||{}).content||{}).parts||[]).map(function(p){return p.text||''}).join('');
