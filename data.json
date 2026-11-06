@@ -812,7 +812,7 @@
     "portuguese": "Vendido",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw48c7s8b9y"
    },
    "wmw48cgn2p2a": {
@@ -1294,5 +1294,5 @@
    }
   }
  },
- "rev": 75
+ "rev": 76
 }
