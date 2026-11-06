@@ -942,7 +942,7 @@
     "portuguese": "atualmente",
     "example": "I am currently reviewing the invoices.",
     "note": "Use \"currently\" before the verb to show something happening now.",
-    "learned": false,
+    "learned": true,
     "id": "wmw4d8n774r8"
    }
   },
@@ -1791,5 +1791,5 @@
    }
   }
  },
- "rev": 165
+ "rev": 166
 }
