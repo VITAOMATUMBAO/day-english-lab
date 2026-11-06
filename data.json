@@ -1325,8 +1325,15 @@
     "target": "She does not know the answer.",
     "score": 88,
     "id": "wmw49cz0sozj"
+   },
+   "wmw49d9d64zo": {
+    "at": "2026-11-06T00:50:44.778Z",
+    "kind": "pron",
+    "target": "We closed the month on Friday.",
+    "score": 88,
+    "id": "wmw49d9d64zo"
    }
   }
  },
- "rev": 88
+ "rev": 89
 }
