@@ -890,7 +890,7 @@
     "portuguese": "pás",
     "example": "I need to file the invoices.",
     "note": "Remember that regular verbs in English add -ed for past tense, e.g., filed.",
-    "learned": false,
+    "learned": true,
     "id": "wmw4caqxjeq4"
    }
   },
@@ -1402,5 +1402,5 @@
    }
   }
  },
- "rev": 104
+ "rev": 105
 }
