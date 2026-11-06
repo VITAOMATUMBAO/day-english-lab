@@ -475,7 +475,7 @@
     "kind": "core",
     "minutes": 30,
     "order": "2026-11-06",
-    "status": "marked",
+    "status": "partial",
     "theme": "Grammar",
     "topic": "Articles",
     "title": "Day 11: articles and past forms",
@@ -612,7 +612,187 @@
      }
     ],
     "doneAt": "2026-11-06T22:19:41.046Z",
-    "userNote": "I have ___ Claude plan.: I have the Claude plan | She is ___ accountant.: She is an accountant | I sent ___ invoice. ___ invoice was late.: I sent the Invoice. A invoice was late | We closed the month"
+    "userNote": "I have ___ Claude plan.: I have the Claude plan | She is ___ accountant.: She is an accountant | I sent ___ invoice. ___ invoice was late.: I sent the Invoice. A invoice was late | We closed the month",
+    "correction": {
+     "date": "2026-11-06",
+     "summary": "7 of 20 correct. Past forms are all right: took, came, paid, told. Next: first mention a / an, then the; base verb after does / did not.",
+     "items": [
+      {
+       "q": "I have ___ Claude plan.",
+       "yours": "I have the Claude plan",
+       "ok": false,
+       "right": "I have a Claude plan.",
+       "why": "New thing for the listener: use a, not the.",
+       "pattern": "Articles a / an / the"
+      },
+      {
+       "q": "She is ___ accountant.",
+       "yours": "She is an accountant",
+       "ok": true,
+       "right": "She is an accountant.",
+       "why": "",
+       "pattern": "Articles a / an / the"
+      },
+      {
+       "q": "I sent ___ invoice. ___ invoice was late.",
+       "yours": "I sent the Invoice. A invoice was late",
+       "ok": false,
+       "right": "I sent an invoice. The invoice was late.",
+       "why": "First mention: an (before a vowel sound). Second mention: the. Invoice has a small i.",
+       "pattern": "Articles a / an / the"
+      },
+      {
+       "q": "We closed the month on ___ Friday.",
+       "yours": "We closede month on friday",
+       "ok": false,
+       "right": "We closed the month on Friday.",
+       "why": "Spelling: closed. Keep the before month. Days start with a capital letter: Friday.",
+       "pattern": "Capital letters and apostrophes"
+      },
+      {
+       "q": "He needs ___ report for ___ audit.",
+       "yours": "He needs a report for the audit",
+       "ok": true,
+       "right": "He needs a report for the audit.",
+       "why": "",
+       "pattern": "Articles a / an / the"
+      },
+      {
+       "q": "I study ___ English every day.",
+       "yours": "I study the English every day",
+       "ok": false,
+       "right": "I study English every day.",
+       "why": "No article before a language name.",
+       "pattern": "Articles a / an / the"
+      },
+      {
+       "q": "She knows the answer.",
+       "yours": "She doesn’t the answer",
+       "ok": false,
+       "right": "She does not know the answer.",
+       "why": "You need the base verb know after does not.",
+       "pattern": "Verb after did / does not",
+       "alts": [
+        "She doesn't know the answer."
+       ]
+      },
+      {
+       "q": "We went to the meeting.",
+       "yours": "We did not go the meeting",
+       "ok": false,
+       "right": "We did not go to the meeting.",
+       "why": "Go + to + place: to is missing.",
+       "pattern": "Prepositions"
+      },
+      {
+       "q": "He works on Sunday.",
+       "yours": "He doesn’t works on sunday",
+       "ok": false,
+       "right": "He does not work on Sunday.",
+       "why": "After does not, use the base verb: work. Sunday has a capital S.",
+       "pattern": "Verb after did / does not",
+       "alts": [
+        "He doesn't work on Sunday."
+       ]
+      },
+      {
+       "q": "They paid the bill.",
+       "yours": "They pay did not the bill",
+       "ok": false,
+       "right": "They did not pay the bill.",
+       "why": "Word order: did not comes BEFORE the base verb.",
+       "pattern": "Verb after did / does not",
+       "alts": [
+        "They didn't pay the bill."
+       ]
+      },
+      {
+       "q": "I took the bus today.",
+       "yours": "I didn’t take the bus today",
+       "ok": true,
+       "right": "I did not take the bus today.",
+       "why": "",
+       "pattern": "Verb after did / does not",
+       "alts": [
+        "I didn't take the bus today."
+       ]
+      },
+      {
+       "q": "Yesterday I (take) the bus to work.",
+       "yours": "Yesterday I took the bus to work",
+       "ok": true,
+       "right": "Yesterday I took the bus to work.",
+       "why": "",
+       "pattern": "Irregular past forms"
+      },
+      {
+       "q": "The client (come) to the office at nine.",
+       "yours": "The client came to the office at nine",
+       "ok": true,
+       "right": "The client came to the office at nine.",
+       "why": "",
+       "pattern": "Irregular past forms"
+      },
+      {
+       "q": "We (pay) the supplier last week.",
+       "yours": "We paid the supplier last week",
+       "ok": true,
+       "right": "We paid the supplier last week.",
+       "why": "",
+       "pattern": "Irregular past forms"
+      },
+      {
+       "q": "She (tell) me the answer.",
+       "yours": "She told me the answer",
+       "ok": true,
+       "right": "She told me the answer.",
+       "why": "",
+       "pattern": "Irregular past forms"
+      },
+      {
+       "q": "They (send) the report on Monday.",
+       "yours": "They sent the report on monday",
+       "ok": false,
+       "right": "They sent the report on Monday.",
+       "why": "Days of the week start with a capital letter: Monday.",
+       "pattern": "Capital letters and apostrophes"
+      },
+      {
+       "q": "balancing",
+       "yours": "I balancing the supply accounts today",
+       "ok": false,
+       "right": "I am balancing the supplier accounts today.",
+       "why": "Present continuous needs am / is / are. Say supplier accounts.",
+       "pattern": "Sentence without a verb"
+      },
+      {
+       "q": "equity",
+       "yours": "My equity is my precious",
+       "ok": false,
+       "right": "The company's equity is high.",
+       "why": "Equity means patrimônio líquido: what a company owns after its debts. It is not a personal word.",
+       "pattern": "Word choice"
+      },
+      {
+       "q": "sold out",
+       "yours": "Before word I sold out",
+       "ok": false,
+       "right": "The tickets are sold out.",
+       "why": "Sold out means esgotado: there is nothing left to buy. Use it for products or tickets.",
+       "pattern": "Word choice"
+      },
+      {
+       "q": "currently",
+       "yours": "Currently I am intern at odebrecht",
+       "ok": false,
+       "right": "Currently I am an intern at Odebrecht.",
+       "why": "Use an before intern. Company names start with a capital letter.",
+       "pattern": "Articles a / an / the"
+      }
+     ],
+     "next": "Redo the wrong items below. Tomorrow: articles with new nouns and negatives with did / does not."
+    },
+    "scoreText": "7/20"
    }
   },
   "scores": {
@@ -681,6 +861,12 @@
     "label": "Retry: he / she + -s",
     "got": 2,
     "total": 3
+   },
+   "s_a19": {
+    "date": "2026-11-06",
+    "label": "Day 11",
+    "got": 7,
+    "total": 20
    }
   },
   "errors": {
@@ -858,6 +1044,11 @@
     "order": "2026-11-06",
     "date": "2026-11-06",
     "text": "Retry again: 7 of 8 right. Day 11 is ready: articles and past forms. Day 10 is an optional make-up."
+   },
+   "f20261106b": {
+    "order": "2026-11-06b",
+    "date": "2026-11-06",
+    "text": "Day 11 corrected: 7 of 20. Past forms all correct. Work on articles and the base verb after does / did not."
    }
   },
   "lookups": {
@@ -1983,5 +2174,5 @@
    }
   }
  },
- "rev": 175
+ "rev": 176
 }
