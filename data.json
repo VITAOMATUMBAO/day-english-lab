@@ -1601,6 +1601,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cuxxicsj"
+   },
+   "wmw4cw3hol7q": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "pasta with white sauce",
+    "right": "pasta with a white sauce",
+    "why": "add article for natural English",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cw3hol7q"
    }
   },
   "practice": {
@@ -1725,5 +1735,5 @@
    }
   }
  },
- "rev": 153
+ "rev": 154
 }
