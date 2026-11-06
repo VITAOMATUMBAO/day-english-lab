@@ -1611,6 +1611,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cw3hol7q"
+   },
+   "wmw4cx9x52ml": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "My favorite dish is pasta with a white sauce",
+    "right": "My favourite dish is pasta with a white sauce",
+    "why": "use British spelling for consistency",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cx9x52ml"
    }
   },
   "practice": {
@@ -1742,5 +1752,5 @@
    }
   }
  },
- "rev": 156
+ "rev": 157
 }
