@@ -1358,6 +1358,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cioc6u9x"
+   },
+   "wmw4cioc9zr6": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "What do you do?",
+    "right": "What is your job?",
+    "why": "More natural phrasing for a job question",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cioc9zr6"
    }
   },
   "practice": {
@@ -1419,5 +1429,5 @@
    }
   }
  },
- "rev": 109
+ "rev": 110
 }
