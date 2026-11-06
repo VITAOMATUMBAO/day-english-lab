@@ -972,7 +972,12 @@
    }
   },
   "attempts": {},
-  "usage": {},
+  "usage": {
+   "2026-11-05": {
+    "ai": 1,
+    "date": "2026-11-05"
+   }
+  },
   "meta": {
    "current": {
     "detail": "Open Activities and start Day 10. It has rules, sentences to type and one speaking task you can record. Due today at 8 pm.",
@@ -1308,5 +1313,5 @@
   },
   "practice": {}
  },
- "rev": 83
+ "rev": 84
 }
