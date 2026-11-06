@@ -903,7 +903,7 @@
     "portuguese": "cidade natal",
     "example": "My hometown is near the office.",
     "note": "Remember that nouns like \"hometown\" are singular; add \"s\" for plural (hometowns).",
-    "learned": false,
+    "learned": true,
     "id": "wmw4co9bwwlk"
    }
   },
@@ -1479,5 +1479,5 @@
    }
   }
  },
- "rev": 117
+ "rev": 118
 }
