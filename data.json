@@ -1561,6 +1561,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4ctchtxyo"
+   },
+   "wmw4cuduzjhr": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "I like Coke.",
+    "right": "I like cooking because it is fun.",
+    "why": "answers the question",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cuduzjhr"
    }
   },
   "practice": {
@@ -1671,5 +1681,5 @@
    }
   }
  },
- "rev": 145
+ "rev": 146
 }
