@@ -866,6 +866,19 @@
     "note": "'Balancing' comes from the verb 'to balance', which means making sure debits and credits match.",
     "learned": true,
     "id": "wmw49wn9vzcu"
+   },
+   "wmw4btaikikw": {
+    "at": "2026-11-06T01:59:11.996Z",
+    "lastAt": "2026-11-06T01:59:11.996Z",
+    "count": 1,
+    "from": "en",
+    "src": "outta here",
+    "english": "outta here",
+    "portuguese": "\"Fora daqui?\"",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw4btaikikw"
    }
   },
   "returns": {
@@ -1376,5 +1389,5 @@
    }
   }
  },
- "rev": 101
+ "rev": 102
 }
