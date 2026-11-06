@@ -864,7 +864,7 @@
     "portuguese": "balanceamento",
     "example": "I am balancing the accounts today.",
     "note": "'Balancing' comes from the verb 'to balance', which means making sure debits and credits match.",
-    "learned": false,
+    "learned": true,
     "id": "wmw49wn9vzcu"
    }
   },
@@ -1376,5 +1376,5 @@
    }
   }
  },
- "rev": 100
+ "rev": 101
 }
