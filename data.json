@@ -611,7 +611,7 @@
       "prompt": "Record 3 sentences about your work today. Use took, came or paid, and one did not. Example: Today I took the bus. I did not go to the meeting. Speak slowly."
      }
     ],
-    "doneAt": "2026-11-06T22:16:08.641Z",
+    "doneAt": "2026-11-06T22:19:41.046Z",
     "userNote": "I have ___ Claude plan.: I have the Claude plan | She is ___ accountant.: She is an accountant | I sent ___ invoice. ___ invoice was late.: I sent the Invoice. A invoice was late | We closed the month"
    }
   },
@@ -1977,5 +1977,5 @@
    }
   }
  },
- "rev": 173
+ "rev": 174
 }
