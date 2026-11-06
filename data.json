@@ -1411,6 +1411,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cn88chjl"
+   },
+   "wmw4cpj35kpi": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "It's the beat, great beats, the sun, and all year",
+    "right": "It has beautiful beaches, great weather, and sunshine all year",
+    "why": "incorrect word choice and grammar",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cpj35kpi"
    }
   },
   "practice": {
@@ -1486,5 +1496,5 @@
    }
   }
  },
- "rev": 120
+ "rev": 121
 }
