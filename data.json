@@ -1591,6 +1591,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cuxxfjfj"
+   },
+   "wmw4cuxxicsj": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "The best food I like cooking is pasta and sauce whites",
+    "right": "My favorite dish to cook is pasta with white sauce",
+    "why": "clarify meaning",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cuxxicsj"
    }
   },
   "practice": {
@@ -1708,5 +1718,5 @@
    }
   }
  },
- "rev": 150
+ "rev": 151
 }
