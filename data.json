@@ -1501,6 +1501,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4crrww8a4"
+   },
+   "wmw4crrwycbh": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "it can be difficult because there is some violence",
+    "right": "it can be difficult because there is some violence there",
+    "why": "missing subject after 'because'",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4crrwycbh"
    }
   },
   "practice": {
@@ -1590,5 +1600,5 @@
    }
   }
  },
- "rev": 133
+ "rev": 134
 }
