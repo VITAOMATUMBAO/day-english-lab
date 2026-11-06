@@ -1441,6 +1441,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cpj3c6ve"
+   },
+   "wmw4cpj3fth5": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "So I travel to another country. It is.",
+    "right": "So I decided to move to another country",
+    "why": "incomplete sentence",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cpj3fth5"
    }
   },
   "practice": {
@@ -1516,5 +1526,5 @@
    }
   }
  },
- "rev": 123
+ "rev": 124
 }
