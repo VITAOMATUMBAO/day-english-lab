@@ -825,7 +825,7 @@
     "portuguese": "Sold out",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw48cgn2p2a"
    },
    "wmw48cq4blp1": {
@@ -1294,5 +1294,5 @@
    }
   }
  },
- "rev": 76
+ "rev": 77
 }
