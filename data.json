@@ -1332,8 +1332,15 @@
     "target": "We closed the month on Friday.",
     "score": 88,
     "id": "wmw49d9d64zo"
+   },
+   "wmw49hv4vx77": {
+    "at": "2026-11-06T00:54:19.615Z",
+    "kind": "pron",
+    "target": "Could you send me the invoice by email?",
+    "score": 85,
+    "id": "wmw49hv4vx77"
    }
   }
  },
- "rev": 90
+ "rev": 91
 }
