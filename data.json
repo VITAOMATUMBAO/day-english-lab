@@ -851,7 +851,7 @@
     "portuguese": "exibir",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw491gd9ndq"
    }
   },
@@ -1363,5 +1363,5 @@
    }
   }
  },
- "rev": 97
+ "rev": 98
 }
