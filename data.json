@@ -1521,6 +1521,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4csd8xusz"
+   },
+   "wmw4csd91enn": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "so...",
+    "right": "so I relax and have fun",
+    "why": "sentence is incomplete",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4csd91enn"
    }
   },
   "practice": {
@@ -1617,5 +1627,5 @@
    }
   }
  },
- "rev": 137
+ "rev": 138
 }
