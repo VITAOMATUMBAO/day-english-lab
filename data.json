@@ -1311,7 +1311,15 @@
     "tries": 0
    }
   },
-  "practice": {}
+  "practice": {
+   "wmw496gtszxs": {
+    "at": "2026-11-06T00:45:27.856Z",
+    "kind": "pron",
+    "target": "I reconciled the supplier accounts this morning.",
+    "score": 78,
+    "id": "wmw496gtszxs"
+   }
+  }
  },
- "rev": 84
+ "rev": 85
 }
