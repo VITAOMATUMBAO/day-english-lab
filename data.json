@@ -1368,6 +1368,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cioc9zr6"
+   },
+   "wmw4cn8847q7": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "pressure",
+    "right": "finance",
+    "why": "wrong word",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cn8847q7"
    }
   },
   "practice": {
@@ -1436,5 +1446,5 @@
    }
   }
  },
- "rev": 112
+ "rev": 113
 }
