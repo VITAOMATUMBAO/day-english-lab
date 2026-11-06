@@ -838,7 +838,7 @@
     "portuguese": "Pego, Pegado",
     "example": "",
     "note": "",
-    "learned": false,
+    "learned": true,
     "id": "wmw48cq4blp1"
    }
   },
@@ -1294,5 +1294,5 @@
    }
   }
  },
- "rev": 77
+ "rev": 78
 }
