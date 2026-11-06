@@ -1378,6 +1378,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cn8847q7"
+   },
+   "wmw4cn888kyn": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "I'm 18, six months, my last month for study",
+    "right": "I am 18 and have six months left in my studies",
+    "why": "unclear phrasing",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cn888kyn"
    }
   },
   "practice": {
@@ -1446,5 +1456,5 @@
    }
   }
  },
- "rev": 113
+ "rev": 114
 }
