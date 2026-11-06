@@ -918,6 +918,19 @@
     "note": "Remember that adjectives like \"tasty\" come before the noun in English, but after the noun in Portuguese (e.g., \"refeições saborosas\").",
     "learned": true,
     "id": "wmw4cy5uq698"
+   },
+   "wmw4d80lp3x5": {
+    "at": "2026-11-06T02:38:38.605Z",
+    "lastAt": "2026-11-06T02:38:38.605Z",
+    "count": 1,
+    "from": "en",
+    "src": "pretty",
+    "english": "pretty",
+    "portuguese": "bonito",
+    "example": "The report is pretty clear.",
+    "note": "\"Pretty\" is an adjective meaning \"very\" or \"quite\"; use it before adjectives (e.g., pretty good).",
+    "learned": false,
+    "id": "wmw4d80lp3x5"
    }
   },
   "returns": {
@@ -1765,5 +1778,5 @@
    }
   }
  },
- "rev": 160
+ "rev": 161
 }
