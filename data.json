@@ -929,7 +929,7 @@
     "portuguese": "bonito",
     "example": "The report is pretty clear.",
     "note": "\"Pretty\" is an adjective meaning \"very\" or \"quite\"; use it before adjectives (e.g., pretty good).",
-    "learned": false,
+    "learned": true,
     "id": "wmw4d80lp3x5"
    }
   },
@@ -1778,5 +1778,5 @@
    }
   }
  },
- "rev": 162
+ "rev": 163
 }
