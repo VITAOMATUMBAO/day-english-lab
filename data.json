@@ -1388,6 +1388,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cn888kyn"
+   },
+   "wmw4cn88chjl": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "Before I'm graduating in accounting",
+    "right": "I will graduate in accounting soon",
+    "why": "incorrect tense",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cn88chjl"
    }
   },
   "practice": {
@@ -1456,5 +1466,5 @@
    }
   }
  },
- "rev": 114
+ "rev": 115
 }
