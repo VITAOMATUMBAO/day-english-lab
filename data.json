@@ -1481,6 +1481,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cqlyrqbl"
+   },
+   "wmw4cqlytyh7": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "move it to another country",
+    "right": "move to another country",
+    "why": "unnecessary pronoun",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cqlytyh7"
    }
   },
   "practice": {
@@ -1563,5 +1573,5 @@
    }
   }
  },
- "rev": 129
+ "rev": 130
 }
