@@ -1551,6 +1551,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4ctchplav"
+   },
+   "wmw4ctchtxyo": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "spend my weekend in the studio for accounting, working",
+    "right": "spend my weekend in the studio doing accounting work",
+    "why": "more natural phrasing",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4ctchtxyo"
    }
   },
   "practice": {
@@ -1654,5 +1664,5 @@
    }
   }
  },
- "rev": 142
+ "rev": 143
 }
