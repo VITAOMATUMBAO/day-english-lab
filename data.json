@@ -801,6 +801,19 @@
     "note": "",
     "learned": true,
     "id": "wmw451ukp3mz"
+   },
+   "wmw48c7s8b9y": {
+    "at": "2026-11-06T00:21:56.455Z",
+    "lastAt": "2026-11-06T00:21:56.455Z",
+    "count": 1,
+    "from": "en",
+    "src": "Sold",
+    "english": "Sold",
+    "portuguese": "Vendido",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw48c7s8b9y"
    }
   },
   "returns": {
@@ -1255,5 +1268,5 @@
    }
   }
  },
- "rev": 72
+ "rev": 73
 }
