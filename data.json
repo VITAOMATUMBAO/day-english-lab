@@ -1471,6 +1471,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cqlyo7oy"
+   },
+   "wmw4cqlyrqbl": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "I use the poor button I am not",
+    "right": "I feel poor and I am not happy",
+    "why": "nonsensical phrase",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cqlyrqbl"
    }
   },
   "practice": {
@@ -1553,5 +1563,5 @@
    }
   }
  },
- "rev": 128
+ "rev": 129
 }
