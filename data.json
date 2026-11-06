@@ -1491,6 +1491,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4cqlytyh7"
+   },
+   "wmw4crrww8a4": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "great hitter",
+    "right": "great weather",
+    "why": "'hitter' is not used to describe a place",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4crrww8a4"
    }
   },
   "practice": {
@@ -1580,5 +1590,5 @@
    }
   }
  },
- "rev": 132
+ "rev": 133
 }
