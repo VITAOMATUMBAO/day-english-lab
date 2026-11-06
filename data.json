@@ -905,6 +905,19 @@
     "note": "Remember that nouns like \"hometown\" are singular; add \"s\" for plural (hometowns).",
     "learned": true,
     "id": "wmw4co9bwwlk"
+   },
+   "wmw4cy5uq698": {
+    "at": "2026-11-06T02:30:58.850Z",
+    "lastAt": "2026-11-06T02:30:58.850Z",
+    "count": 1,
+    "from": "en",
+    "src": "tasty meals",
+    "english": "tasty meals",
+    "portuguese": "refeições saborosas",
+    "example": "We have tasty meals in the break room.",
+    "note": "Remember that adjectives like \"tasty\" come before the noun in English, but after the noun in Portuguese (e.g., \"refeições saborosas\").",
+    "learned": false,
+    "id": "wmw4cy5uq698"
    }
   },
   "returns": {
@@ -1752,5 +1765,5 @@
    }
   }
  },
- "rev": 157
+ "rev": 158
 }
