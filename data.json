@@ -931,6 +931,19 @@
     "note": "\"Pretty\" is an adjective meaning \"very\" or \"quite\"; use it before adjectives (e.g., pretty good).",
     "learned": true,
     "id": "wmw4d80lp3x5"
+   },
+   "wmw4d8n774r8": {
+    "at": "2026-11-06T02:39:07.890Z",
+    "lastAt": "2026-11-06T02:39:07.890Z",
+    "count": 1,
+    "from": "en",
+    "src": "currently",
+    "english": "currently",
+    "portuguese": "atualmente",
+    "example": "I am currently reviewing the invoices.",
+    "note": "Use \"currently\" before the verb to show something happening now.",
+    "learned": false,
+    "id": "wmw4d8n774r8"
    }
   },
   "returns": {
@@ -1778,5 +1791,5 @@
    }
   }
  },
- "rev": 163
+ "rev": 164
 }
