@@ -1339,8 +1339,15 @@
     "target": "Could you send me the invoice by email?",
     "score": 85,
     "id": "wmw49hv4vx77"
+   },
+   "wmw49jan38q4": {
+    "at": "2026-11-06T00:55:26.367Z",
+    "kind": "pron",
+    "target": "I have worked in accounting for three years.",
+    "score": 85,
+    "id": "wmw49jan38q4"
    }
   }
  },
- "rev": 92
+ "rev": 93
 }
