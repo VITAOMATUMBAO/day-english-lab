@@ -1318,8 +1318,15 @@
     "target": "I reconciled the supplier accounts this morning.",
     "score": 78,
     "id": "wmw496gtszxs"
+   },
+   "wmw49cz0sozj": {
+    "at": "2026-11-06T00:50:31.370Z",
+    "kind": "pron",
+    "target": "She does not know the answer.",
+    "score": 88,
+    "id": "wmw49cz0sozj"
    }
   }
  },
- "rev": 86
+ "rev": 87
 }
