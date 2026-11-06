@@ -944,6 +944,19 @@
     "note": "Use \"currently\" before the verb to show something happening now.",
     "learned": true,
     "id": "wmw4d8n774r8"
+   },
+   "wmw4dz491t58": {
+    "at": "2026-11-06T02:59:43.044Z",
+    "lastAt": "2026-11-06T02:59:43.044Z",
+    "count": 1,
+    "from": "en",
+    "src": "greed",
+    "english": "greed",
+    "portuguese": "ganância",
+    "example": "The manager warned us about greed in the office.",
+    "note": "Remember that nouns like \"greed\" do not change in plural; add an \"s\" for the plural form (greeds) only when needed.",
+    "learned": false,
+    "id": "wmw4dz491t58"
    }
   },
   "returns": {
@@ -1791,5 +1804,5 @@
    }
   }
  },
- "rev": 166
+ "rev": 167
 }
