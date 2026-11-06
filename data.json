@@ -892,6 +892,19 @@
     "note": "Remember that regular verbs in English add -ed for past tense, e.g., filed.",
     "learned": true,
     "id": "wmw4caqxjeq4"
+   },
+   "wmw4co9bwwlk": {
+    "at": "2026-11-06T02:23:16.796Z",
+    "lastAt": "2026-11-06T02:23:16.796Z",
+    "count": 1,
+    "from": "en",
+    "src": "hometown",
+    "english": "hometown",
+    "portuguese": "cidade natal",
+    "example": "My hometown is near the office.",
+    "note": "Remember that nouns like \"hometown\" are singular; add \"s\" for plural (hometowns).",
+    "learned": false,
+    "id": "wmw4co9bwwlk"
    }
   },
   "returns": {
@@ -1466,5 +1479,5 @@
    }
   }
  },
- "rev": 115
+ "rev": 116
 }
