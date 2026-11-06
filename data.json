@@ -814,6 +814,19 @@
     "note": "",
     "learned": false,
     "id": "wmw48c7s8b9y"
+   },
+   "wmw48cgn2p2a": {
+    "at": "2026-11-06T00:22:07.934Z",
+    "lastAt": "2026-11-06T00:22:07.934Z",
+    "count": 1,
+    "from": "pt",
+    "src": "Sold out",
+    "english": "esgotado, vendido",
+    "portuguese": "Sold out",
+    "example": "",
+    "note": "",
+    "learned": false,
+    "id": "wmw48cgn2p2a"
    }
   },
   "returns": {
@@ -1268,5 +1281,5 @@
    }
   }
  },
- "rev": 73
+ "rev": 74
 }
