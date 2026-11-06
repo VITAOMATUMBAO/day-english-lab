@@ -853,6 +853,19 @@
     "note": "",
     "learned": true,
     "id": "wmw491gd9ndq"
+   },
+   "wmw49wn9vzcu": {
+    "at": "2026-11-06T01:05:49.267Z",
+    "lastAt": "2026-11-06T01:05:49.267Z",
+    "count": 1,
+    "from": "en",
+    "src": "balancing",
+    "english": "balancing",
+    "portuguese": "balanceamento",
+    "example": "I am balancing the accounts today.",
+    "note": "'Balancing' comes from the verb 'to balance', which means making sure debits and credits match.",
+    "learned": false,
+    "id": "wmw49wn9vzcu"
    }
   },
   "returns": {
@@ -1363,5 +1376,5 @@
    }
   }
  },
- "rev": 98
+ "rev": 99
 }
