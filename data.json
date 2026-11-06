@@ -1348,6 +1348,16 @@
     "why": "She is spelled s-h-e.",
     "fixed": false,
     "tries": 0
+   },
+   "wmw4cioc6u9x": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "Do you work or study?",
+    "right": "Do you work or are you studying?",
+    "why": "Adds correct verb form for ongoing study",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4cioc6u9x"
    }
   },
   "practice": {
@@ -1409,5 +1419,5 @@
    }
   }
  },
- "rev": 108
+ "rev": 109
 }
