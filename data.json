@@ -1511,6 +1511,16 @@
     "fixed": false,
     "tries": 0,
     "id": "wmw4crrwycbh"
+   },
+   "wmw4csd8xusz": {
+    "date": "2026-11-05",
+    "pattern": "Speaking",
+    "wrong": "I made my usually weekends",
+    "right": "I usually spend my weekends",
+    "why": "word order and verb choice are wrong",
+    "fixed": false,
+    "tries": 0,
+    "id": "wmw4csd8xusz"
    }
   },
   "practice": {
@@ -1607,5 +1617,5 @@
    }
   }
  },
- "rev": 136
+ "rev": 137
 }
