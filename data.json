@@ -795,10 +795,10 @@
     "scoreText": "7/20",
     "redo": {
      "0": {
-      "ok": false,
-      "answer": "O have a claude plan",
-      "tries": 1,
-      "at": "2026-11-07T02:22:13.996Z"
+      "ok": true,
+      "answer": "I have a claude plan",
+      "tries": 2,
+      "at": "2026-11-07T02:22:41.072Z"
      }
     }
    }
@@ -2188,5 +2188,5 @@
    }
   }
  },
- "rev": 178
+ "rev": 179
 }
