@@ -1447,6 +1447,12 @@
     "activityId": "a19",
     "text": "I have ___ Claude plan.: I have the Claude plan\nShe is ___ accountant.: She is an accountant\nI sent ___ invoice. ___ invoice was late.: I sent the Invoice. A invoice was late\nWe closed the month on ___ Friday.: We closede month on friday\nHe needs ___ report for ___ audit.: He needs a report for the audit\nI study ___ English every day.: I study the English every day\nShe knows the answer.: She doesn’t the answer\nWe went to the meeting.: We did not go the meeting\nHe works on Sunday.: He doesn’t works on sunday\nThey paid the bill.: They pay did not the bill\nI took the bus today.: I didn’t take the bus today\nYesterday I (take) the bus to work.: Yesterday I took the bus to work\nThe client (come) to the office at nine.: The client came to the office at nine\nWe (pay) the supplier last week.: We paid the supplier last week\nShe (tell) me the answer.: She told me the answer\nThey (send) the report on Monday.: They sent the report on monday\nbalancing: I balancing the supply accounts today\nequity: My equity is my precious\nsold out: Before word I sold out\ncurrently: Currently I am intern at odebrecht",
     "kind": "answer"
+   },
+   "wmw5s2tj0iux": {
+    "at": "2026-11-07T02:22:16.571Z",
+    "activityId": "a19",
+    "text": "Redo: I have ___ Claude plan. => O have a claude plan (wrong)",
+    "kind": "redo"
    }
   },
   "attempts": {},
@@ -2182,5 +2188,5 @@
    }
   }
  },
- "rev": 177
+ "rev": 178
 }
