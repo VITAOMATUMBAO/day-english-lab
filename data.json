@@ -792,7 +792,15 @@
      ],
      "next": "Redo the wrong items below. Tomorrow: articles with new nouns and negatives with did / does not."
     },
-    "scoreText": "7/20"
+    "scoreText": "7/20",
+    "redo": {
+     "0": {
+      "ok": false,
+      "answer": "O have a claude plan",
+      "tries": 1,
+      "at": "2026-11-07T02:22:13.996Z"
+     }
+    }
    }
   },
   "scores": {
@@ -2174,5 +2182,5 @@
    }
   }
  },
- "rev": 176
+ "rev": 177
 }
