@@ -1336,7 +1336,7 @@
     "portuguese": "reto",
     "example": "Please write the numbers straight on the form.",
     "note": "\"Straight\" can mean \"direct\" or \"without bends\"; use it as an adjective before nouns.",
-    "learned": true,
+    "learned": false,
     "id": "wmw88l0t94z1"
    },
    "wmw88lqn9sub": {
@@ -2230,5 +2230,5 @@
    }
   }
  },
- "rev": 192
+ "rev": 193
 }
