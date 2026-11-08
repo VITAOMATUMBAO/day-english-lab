@@ -1349,7 +1349,7 @@
     "portuguese": "ainda",
     "example": "I still need to file the report.",
     "note": "\"Still\" is an adverb; place it before the main verb (except with \"to be\").",
-    "learned": false,
+    "learned": true,
     "id": "wmw88lqn9sub"
    }
   },
@@ -2230,5 +2230,5 @@
    }
   }
  },
- "rev": 186
+ "rev": 187
 }
