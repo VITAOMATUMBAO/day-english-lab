@@ -1305,7 +1305,10 @@
     "example": "The manager warned us about greed in the office.",
     "note": "Remember that nouns like \"greed\" do not change in plural; add an \"s\" for the plural form (greeds) only when needed.",
     "learned": false,
-    "id": "wmw4dz491t58"
+    "id": "wmw4dz491t58",
+    "rev": 1,
+    "lastReview": "2026-11-08",
+    "nextReview": "2026-11-11"
    },
    "wmw4e3r5brqf": {
     "at": "2026-11-06T03:03:19.342Z",
@@ -2211,5 +2214,5 @@
    }
   }
  },
- "rev": 182
+ "rev": 183
 }
