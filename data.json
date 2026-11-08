@@ -1338,6 +1338,19 @@
     "note": "\"Straight\" can mean \"direct\" or \"without bends\"; use it as an adjective before nouns.",
     "learned": false,
     "id": "wmw88l0t94z1"
+   },
+   "wmw88lqn9sub": {
+    "at": "2026-11-08T19:40:25.509Z",
+    "lastAt": "2026-11-08T19:40:25.509Z",
+    "count": 1,
+    "from": "en",
+    "src": "still",
+    "english": "still",
+    "portuguese": "ainda",
+    "example": "I still need to file the report.",
+    "note": "\"Still\" is an adverb; place it before the main verb (except with \"to be\").",
+    "learned": false,
+    "id": "wmw88lqn9sub"
    }
   },
   "returns": {
@@ -2217,5 +2230,5 @@
    }
   }
  },
- "rev": 184
+ "rev": 185
 }
