@@ -1320,7 +1320,7 @@
     "portuguese": "disse",
     "example": "I told my boss the report is ready.",
     "note": "\"told\" is the past tense of \"tell\"; use it for actions that happened in the past.",
-    "learned": false,
+    "learned": true,
     "id": "wmw4e3r5brqf",
     "rev": 0,
     "lastReview": "2026-11-08",
@@ -2230,5 +2230,5 @@
    }
   }
  },
- "rev": 188
+ "rev": 189
 }
