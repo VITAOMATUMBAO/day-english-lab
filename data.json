@@ -1319,6 +1319,19 @@
     "note": "\"told\" is the past tense of \"tell\"; use it for actions that happened in the past.",
     "learned": false,
     "id": "wmw4e3r5brqf"
+   },
+   "wmw88l0t94z1": {
+    "at": "2026-11-08T19:39:52.029Z",
+    "lastAt": "2026-11-08T19:39:52.029Z",
+    "count": 1,
+    "from": "en",
+    "src": "straight",
+    "english": "straight",
+    "portuguese": "reto",
+    "example": "Please write the numbers straight on the form.",
+    "note": "\"Straight\" can mean \"direct\" or \"without bends\"; use it as an adjective before nouns.",
+    "learned": false,
+    "id": "wmw88l0t94z1"
    }
   },
   "returns": {
@@ -2194,5 +2207,5 @@
    }
   }
  },
- "rev": 180
+ "rev": 181
 }
