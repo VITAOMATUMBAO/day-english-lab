@@ -1351,6 +1351,19 @@
     "note": "\"Still\" is an adverb; place it before the main verb (except with \"to be\").",
     "learned": true,
     "id": "wmw88lqn9sub"
+   },
+   "wmw88ma38grv": {
+    "at": "2026-11-08T19:40:50.707Z",
+    "lastAt": "2026-11-08T19:40:50.707Z",
+    "count": 1,
+    "from": "en",
+    "src": "yet still",
+    "english": "yet still",
+    "portuguese": "ainda",
+    "example": "I still need to file the report.",
+    "note": "Use 'still' for actions that continue; 'yet' is often used in questions or negatives, e.g., 'Has it arrived yet?'",
+    "learned": false,
+    "id": "wmw88ma38grv"
    }
   },
   "returns": {
@@ -2230,5 +2243,5 @@
    }
   }
  },
- "rev": 193
+ "rev": 194
 }
