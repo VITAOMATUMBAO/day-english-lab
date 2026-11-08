@@ -1321,7 +1321,10 @@
     "example": "I told my boss the report is ready.",
     "note": "\"told\" is the past tense of \"tell\"; use it for actions that happened in the past.",
     "learned": false,
-    "id": "wmw4e3r5brqf"
+    "id": "wmw4e3r5brqf",
+    "rev": 0,
+    "lastReview": "2026-11-08",
+    "nextReview": "2026-11-09"
    },
    "wmw88l0t94z1": {
     "at": "2026-11-08T19:39:52.029Z",
@@ -2214,5 +2217,5 @@
    }
   }
  },
- "rev": 183
+ "rev": 184
 }
