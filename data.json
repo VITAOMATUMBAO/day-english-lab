@@ -1364,6 +1364,19 @@
     "note": "Use 'still' for actions that continue; 'yet' is often used in questions or negatives, e.g., 'Has it arrived yet?'",
     "learned": false,
     "id": "wmw88ma38grv"
+   },
+   "wmwjon7uxxde": {
+    "at": "2026-11-16T19:54:56.265Z",
+    "lastAt": "2026-11-16T19:54:56.265Z",
+    "count": 1,
+    "from": "en",
+    "src": "git",
+    "english": "git",
+    "portuguese": "git",
+    "example": "I use git to manage my code.",
+    "note": "Remember that proper nouns like software names stay the same in both languages.",
+    "learned": false,
+    "id": "wmwjon7uxxde"
    }
   },
   "returns": {
@@ -2243,5 +2256,5 @@
    }
   }
  },
- "rev": 195
+ "rev": 196
 }
