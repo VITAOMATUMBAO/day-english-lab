@@ -1362,7 +1362,7 @@
     "portuguese": "ainda",
     "example": "I still need to file the report.",
     "note": "Use 'still' for actions that continue; 'yet' is often used in questions or negatives, e.g., 'Has it arrived yet?'",
-    "learned": false,
+    "learned": true,
     "id": "wmw88ma38grv"
    },
    "wmwjon7uxxde": {
@@ -2260,5 +2260,5 @@
    }
   }
  },
- "rev": 197
+ "rev": 198
 }
