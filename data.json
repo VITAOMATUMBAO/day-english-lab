@@ -1377,6 +1377,19 @@
     "note": "Remember that proper nouns like software names stay the same in both languages.",
     "learned": false,
     "id": "wmwjon7uxxde"
+   },
+   "wmwjxwllw299": {
+    "at": "2026-11-17T00:14:10.532Z",
+    "lastAt": "2026-11-17T00:14:10.532Z",
+    "count": 1,
+    "from": "en",
+    "src": "set",
+    "english": "set",
+    "portuguese": "conjunto",
+    "example": "Please set the printer to black.",
+    "note": "\"Set\" can be a noun (conjunto) or a verb (definir); choose based on context.",
+    "learned": false,
+    "id": "wmwjxwllw299"
    }
   },
   "returns": {
@@ -2260,5 +2273,5 @@
    }
   }
  },
- "rev": 199
+ "rev": 200
 }
