@@ -1390,6 +1390,19 @@
     "note": "\"Set\" can be a noun (conjunto) or a verb (definir); choose based on context.",
     "learned": false,
     "id": "wmwjxwllw299"
+   },
+   "wmwjxwyssm9g": {
+    "at": "2026-11-17T00:14:27.627Z",
+    "lastAt": "2026-11-17T00:14:27.627Z",
+    "count": 1,
+    "from": "en",
+    "src": "you set",
+    "english": "you set",
+    "portuguese": "você define",
+    "example": "You set the deadline for the report.",
+    "note": "Remember that \"set\" can mean \"definir\" (to decide) or \"configurar\" (to arrange).",
+    "learned": false,
+    "id": "wmwjxwyssm9g"
    }
   },
   "returns": {
@@ -2273,5 +2286,5 @@
    }
   }
  },
- "rev": 201
+ "rev": 202
 }
